@@ -1,0 +1,40 @@
+.text-input{
+    border: none;
+    border-bottom: 0.2rem solid #1F7896 ; 
+    padding: 0.2rem;
+    margin: 0.6rem;
+    width:100%
+}
+
+.button{
+    padding: 10px 20px;
+    /* font-size: 16px; */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button__blue{
+    background-color: #1F4452;
+    color: white;
+}
+
+.button-text{
+    
+}
+
+.button__blue:hover{
+    background-color: #1F7896;
+}
+
+.nav-button-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+
+/* TODO: do this to apply font to regular text */
+.text{
+    
+}
