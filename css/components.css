@@ -7,10 +7,10 @@
 }
 
 .button{
-    padding: 10px 20px;
+    padding: 0.8rem 1.6rem;
     /* font-size: 16px; */
     border: none;
-    border-radius: 5px;
+    border-radius: 0.4rem;
     cursor: pointer;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .button-text{
-    
+    text-decoration: none;
 }
 
 .button__blue:hover{
@@ -36,5 +36,5 @@
 
 /* TODO: do this to apply font to regular text */
 .text{
-    
+    font-family: 'Roboto', sans-serif;
 }

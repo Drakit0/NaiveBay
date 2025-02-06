@@ -13,6 +13,17 @@
     margin:1rem;
 }
 
+.login-link{
+    font-size: 0.8rem;
+}
+
+.login-link:link{
+    color: #1F4452;
+}
+.login-link:visited{
+    color: #1F4452;
+}
+
 .login-video{
     height:100%;
     width:100%;
