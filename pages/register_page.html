@@ -3,25 +3,34 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Login Page</title>
+        <title>Register Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Pablo Tuñón Laguna">
 
+        <link rel="stylesheet" href="../css/register_components.css"> 
+        <link rel="stylesheet" href="../css/components.css"> 
+        <link rel="stylesheet" href="../css/normalize.css"> 
+
+        <link rel="icon" href="../assets/images/logo_transparente.png" type="image/png">
     </head>
     <body>
-        <main class="register-container">
-            <!-- Video section -->
+        <main class="register-page-container">
+            <video class="login-video" autoplay muted loop playsinline>
+                <source src="../assets/videos/beach_login.mp4">
+            </video>
 
-            <div class="info-container">
+            <div class="register-container">
                 <header class="logo-container">
-                    <!-- Put the logo of the page -->
+                    <img class="login-logo" src="../assets/images/logo_transparente.png">
+                    <h4 class="text">Register a new account</h4>
                 </header>
 
                 <section class="info-user-container">
-                    <form class="login-form">
+                    <form class="register-form">
                         
                         <input class="text-input" type="text" id="Name" name="Name" required placeholder="Name*">
-                        <input class="text-input" type="text" id="Surname 1" name="Surname1" required placeholder="Surname1*">
-                        <input class="text-input" type="text" id="Surname 2" name="Surname2" placeholder="Surname2">
+                        <input class="text-input" type="text" id="Surname 1" name="Surname1" required placeholder="Surname 1*">
+                        <input class="text-input" type="text" id="Surname 2" name="Surname2" placeholder="Surname 2">
                         <input class="text-input" type="text" id="Username" name="username" required placeholder="Username*">
                         <input class="text-input" type="text" id="Password" name="Password" required placeholder="Password*">
                         <input class="text-input" type="text" id="Confirm password" name="Confirm password" required placeholder="Confirm password*">
@@ -37,7 +46,7 @@
                             <option value="">Select</option>
                         </select> 
                         
-                        <input type="date" id="birthdate" name="birthdate" required placeholder="Year/Month/Day*">
+                        <input type="date" id="birthdate" name="birthdate" required>
     
                         <button type="Log In">Log In</button>
                         <button type="Google Log In">Google Log In</button>
