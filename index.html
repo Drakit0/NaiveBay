@@ -5,8 +5,39 @@
         <title>NaiveBay</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Sergio Jimenez Romero">
+        <link rel="stylesheet" href="css/components.css"/> 
+        <link rel="stylesheet" href="css/normalize.css"/> 
+        <link rel="stylesheet" href="css/main_page_components.css"/>
+
     </head>
     <body>
+        <main class="container">
+            <header class="login-header">
+                <a href="index.html" class=" ">
+                    <img class="main-page-logo" src="./assets/images/logo_transparente.png">
+                </a>
+                
+                
+                <h4 class="text">Sign in to your account</h4>
+            </header>
+            <section class="login-info-container">
+                <form class="login-form">
+                    <input class="text-input" type="text" id="Username" name="Username", placeholder="Username">
+                    <input class="text-input" type="text" id="Password" name="Password", placeholder="Password">
+                    <input class="button login-button button__blue" type="submit" value="Login">
+                </form>
+                <a href="../index.html" class="nav-button-container button-text">
+                    <button class="button login-button ">Back</button>
+                </a>
+                <nav class="login-links-container">
+                    <a class="login-link text" href="#">Register</a>
+                    <a class="login-link text" href="#">Forgot your password?</a>
+                </nav>
+            </section>
+            <footer>
+                <p class="text">NaiveBay 2025</p>
+            </footer>
+        </main>
         <h1>building in process!</h1>
         <a href="pages/login_page.html"> Link to login page</a>
     </body>
