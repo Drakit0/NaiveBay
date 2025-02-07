@@ -8,6 +8,7 @@
         <meta name="author" content="Pablo Tuñón Laguna">
 
         <link rel="stylesheet" href="../css/register_components.css"> 
+        <link rel="stylesheet" href="../css/login_components.css"> 
         <link rel="stylesheet" href="../css/components.css"> 
         <link rel="stylesheet" href="../css/normalize.css"> 
 
@@ -20,7 +21,7 @@
             </video>
 
             <div class="register-container">
-                <header class="logo-container">
+                <header class="login-header">
                     <img class="register-logo" src="../assets/images/logo_transparente.png">
                     <h4 class="text">Register a new account</h4>
                 </header>
@@ -28,9 +29,12 @@
                 <section class="info-user-container">
                     <form class="register-form">
                         
-                        <input class="text-input" type="text" id="Name" name="Name" required placeholder="Name*">
-                        <input class="text-input" type="text" id="Surname 1" name="Surname1" required placeholder="Surname 1*">
-                        <input class="text-input" type="text" id="Surname 2" name="Surname2" placeholder="Surname 2">
+                        <section class="name-container">
+                            <input class="text-input" type="text" id="Name" name="Name" required placeholder="Name*">
+                            <input class="text-input" type="text" id="Surname 1" name="Surname1" required placeholder="Surname 1*">
+                            <input class="text-input" type="text" id="Surname 2" name="Surname2" placeholder="Surname 2">
+                        </section>
+
                         <input class="text-input" type="text" id="Username" name="username" required placeholder="Username*">
                         <input class="text-input" type="text" id="Password" name="Password" required placeholder="Password*">
                         <input class="text-input" type="text" id="Confirm password" name="Confirm password" required placeholder="Confirm password*">
@@ -47,22 +51,7 @@
                         <section class="postal-code-container">
                             <select id="Autonomous community" name="Autonomous community" required>
                                 <option value="">Autonomous community*</option>
-                                <option value="Andalusia">Andalusia</option>
-                                <option value="Aragon">Aragon</option>
-                                <option value="Asturias">Asturias</option>
-                                <option value="Balearic Islands">Balearic Islands</option>
-                                <option value="Basque Country">Basque Country</option>
-                                <option value="Canary Islands">Canary Islands</option>
-                                <option value="Cantabria">Cantabria</option>
-                                <option value="Castile and León">Castile and León</option>
-                                <option value="Castile-La Mancha">Castile La-Mancha</option>
-                                <option value="Catalonia">Catalonia</option>
-                                <option value="Extremadura">Extremadura</option>
-                                <option value="Galicia">Galicia</option>
-                                <option value="La Rioja">La Rioja</option>
                                 <option value="Madrid">Madrid</option>
-                                <option value="Murcia">Murcia</option>
-                                <option value="Navarre">Navarre</option>
                                 <option value="Valencian Community">Valencian Community</option>
                             </select>   
                             
@@ -73,11 +62,13 @@
                         
                         <input class="date-selector" type="date" id="birthdate" name="birthdate" required>
                         
-                        <section class="buttons-container">
-                            <a href="../index.html" class="button register-button">Back</a>
-                            <input class="button register-button button__blue" type="submit" value="Register">
-                            <a href="../pages/login_page.html" class="button register-button">Log In</a>
-                        </section>
+                        <input class="button login-button button__blue" type="submit" value="Register">
+                        <a href="../index.html" class="nav-button-container button-text">
+                            <button class="button login-button ">Back</button>
+                        </a>
+                        <nav class="login-links-container">
+                            <a class="login-link text" href="#">Log In</a>
+                        </nav> 
 
                     </form>
 
