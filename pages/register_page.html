@@ -15,13 +15,13 @@
     </head>
     <body>
         <main class="register-page-container">
-            <video class="login-video" autoplay muted loop playsinline>
+            <video class="register-video" autoplay muted loop playsinline>
                 <source src="../assets/videos/beach_login.mp4">
             </video>
 
             <div class="register-container">
                 <header class="logo-container">
-                    <img class="login-logo" src="../assets/images/logo_transparente.png">
+                    <img class="register-logo" src="../assets/images/logo_transparente.png">
                     <h4 class="text">Register a new account</h4>
                 </header>
 
@@ -35,27 +35,51 @@
                         <input class="text-input" type="text" id="Password" name="Password" required placeholder="Password*">
                         <input class="text-input" type="text" id="Confirm password" name="Confirm password" required placeholder="Confirm password*">
                         <input class="text-input" type="text" id="Mail" name="Mail" required placeholder="Mail*">
-                        <input class="text-input" type="text" id="Adress" name="Adress" required placeholder="Adress*">
-                        <input class="text-input" type="text" id="Hall" name="Hall" required placeholder="Hall*">
+
+                        <section class="address-container">
+                            <input class="text-input" type="text" id="Adress" name="Adress" required placeholder="Adress*">
+                            <input class="text-input" type="text" id="Hall" name="Hall" required placeholder="Hall*">
+                            <input class="text-input" type="text" id="Door" name="Door" required placeholder="Door">
+                        </section>
+
                         <input class="text-input" type="text" id="ID" name="ID" required placeholder="ID*">
 
-                        <select id="Autonomous community" name="Autonomous community" required placeholder="Autonomous community*">
-                            <option value="">Select</option>
-                        </select>   
-                        <select id="City" name="City" required placeholder = "City*">
-                            <option value="">Select</option>
-                        </select> 
+                        <section class="postal-code-container">
+                            <select id="Autonomous community" name="Autonomous community" required>
+                                <option value="">Autonomous community*</option>
+                                <option value="Andalusia">Andalusia</option>
+                                <option value="Aragon">Aragon</option>
+                                <option value="Asturias">Asturias</option>
+                                <option value="Balearic Islands">Balearic Islands</option>
+                                <option value="Basque Country">Basque Country</option>
+                                <option value="Canary Islands">Canary Islands</option>
+                                <option value="Cantabria">Cantabria</option>
+                                <option value="Castile and León">Castile and León</option>
+                                <option value="Castile-La Mancha">Castile La-Mancha</option>
+                                <option value="Catalonia">Catalonia</option>
+                                <option value="Extremadura">Extremadura</option>
+                                <option value="Galicia">Galicia</option>
+                                <option value="La Rioja">La Rioja</option>
+                                <option value="Madrid">Madrid</option>
+                                <option value="Murcia">Murcia</option>
+                                <option value="Navarre">Navarre</option>
+                                <option value="Valencian Community">Valencian Community</option>
+                            </select>   
+                            
+                            <select id="City" name="City" required>
+                                <option value="">City*</option>
+                            </select> 
+                        </section>
                         
-                        <input type="date" id="birthdate" name="birthdate" required>
-    
-                        <button type="Log In">Log In</button>
-                        <button type="Google Log In">Google Log In</button>
-                        <button type="Back">Back</button>
-                        <button type="submit">Register</button>
+                        <input class="date-selector" type="date" id="birthdate" name="birthdate" required>
+                        
+                        <section class="buttons-container">
+                            <a href="../index.html" class="button register-button">Back</a>
+                            <input class="button register-button button__blue" type="submit" value="Register">
+                            <a href="../pages/login_page.html" class="button register-button">Log In</a>
+                        </section>
 
                     </form>
-
-                    <!-- Button links -->
 
                 </section>
 
