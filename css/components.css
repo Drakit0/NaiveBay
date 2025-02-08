@@ -35,11 +35,32 @@
     justify-content: center;
 }
 
-
+.big-on-hover:hover{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
 
 .text{
     font-family: 'Roboto', sans-serif;
 }
 .text__white{
     color: white;
+}
+.footer-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+
+}
+
+.footer-list{
+    list-style-type: none;
+    padding: 0rem;
+    margin: 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    
 }
