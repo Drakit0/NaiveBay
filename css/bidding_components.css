@@ -1,0 +1,50 @@
+.bidding-page{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.images-container{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 60% 40%;
+}
+
+.principal-image{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.related-images{
+    display: flex;
+}
+
+.bidding-info-container{
+    width: 100%;
+}
+
+.bidding-name{
+    font-size: 2em;
+    font-weight: bold;
+    background-color: #8f0000;
+}
+
+.bidding-description{
+    background-color: aquamarine;
+}
+
+.bidding-buttons-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem;
+}
+
+.item-info{
+    background-color: #1c7628;
+}
+
