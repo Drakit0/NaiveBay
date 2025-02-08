@@ -10,27 +10,26 @@
         <link rel="stylesheet" href="css/normalize.css"/> 
         <link rel="stylesheet" href="css/main_page_components.css"/>
         <script src="js/sidebar_activation.js"></script>
+        <script src="js/login_button_state.js"></script>
 
     </head>
     <body>
         <main class="main-page__container">
             <header class="main-page__header">
-                <img src="assets/icons/menu_bar.png" class="main-page__icon big-on-hover" onclick="sidebarToggle()">
+                <img src="assets/icons/menu_bar.png" class="main-page__icon big-on-hover" onclick="sidebarToggle()"/>
                 <a href="index.html">
                     <img class="main-page__logo" src="./assets/images/logo_transparente.png">
                 </a>
                 <div class="search-bar-container">
-                    <div class="search-bar">
+                    <form class="search-bar">
                         <input type="text" class="search-input" placeholder="Search"/>
                         <button type="submit" class="button__blue search-button ">
                             <img src="assets/icons/search_icon.png" class="search-icon big-on-hover">
                         </button>
-                    </div>
+                    </form>
                 </div>
-                <div class="main-page__login-container">
-                    <a href="./pages/login_page.html" class="button-text">
-                        <button class="button login-button " >Login</button>
-                    </a>
+                <div class="main-page__login-container" id="main-page__login-container">
+                    
                 </div>
                 
                 
@@ -49,7 +48,14 @@
             </aside>
             
             <section class="main-page__content">
-                <img src="assets/images/main_page_background.jpg" >
+                 <div class="main-page__auction-list">
+                    <h2 class="text">Trending</h2>
+                    <!-- TODO: see if we include the items with JS -->
+                 </div>
+                 <div class="main-page__auction-list">
+                    <h2 class="text">Ending soon!</h2>
+                    <!-- TODO: see if we include the items with JS -->
+                 </div>
             </section>
             <footer class="main-page__footer">
                 <div class="main-page__footer-container">

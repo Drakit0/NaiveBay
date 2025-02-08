@@ -86,9 +86,23 @@
     
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* gap:3rem; */
+    background-image: url(../assets/images/main_page_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* padding:3rem  */
 
 }
-
+.main-page__auction-list{
+    width: 80vw;
+    height: 40vh;
+    border-radius: 1rem;
+    background-color: #e0e0e0;
+    margin: 3rem;
+    padding: 2rem;
+}
 .main-page__footer{
     /* border-top: 0.1rem solid white; */
     display: flex;
