@@ -37,7 +37,7 @@
 
 .big-on-hover:hover{
     transform: scale(1.2);
-    transition: transform 0.3s ease;
+    
 }
 
 .text{
@@ -52,6 +52,14 @@
     justify-content: center;
     align-items: left;
 
+}
+
+.sidebar-list{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.8rem;
 }
 
 .footer-list{
