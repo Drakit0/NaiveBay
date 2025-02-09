@@ -27,6 +27,13 @@
     grid-template-columns: 30% 70%;
 }
 
+.displayed-image{
+    width: 35rem;
+    object-fit: cover;
+    margin-top: 2.5rem;
+    padding-left: 1.5rem;
+}
+
 .carrusel-images{
     background-color: #1F7896;
     display: flex;
