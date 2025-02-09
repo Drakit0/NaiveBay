@@ -153,3 +153,10 @@
     opacity: 1;
     visibility: visible;
 }
+
+.separator{
+    width: 95%;
+    height: 0.01rem;
+    background-color: #0a3d62;
+    border: none
+}

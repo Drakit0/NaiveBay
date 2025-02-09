@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bidding Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Pablo Tuñón Laguna">
+
+        <link rel="stylesheet" href="../css/components.css"> 
+        <link rel="stylesheet" href="../css/normalize.css"> 
+        <link rel="stylesheet" href="../css/main_page_components.css">
+        <link rel="stylesheet" href="../css/bidding_components.css">
+        <link rel="stylesheet" href="css/components.css"/> 
+        <link rel="stylesheet" href="css/normalize.css"/> 
+        <link rel="stylesheet" href="css/main_page_components.css"/>
+
+        <script src="../js/sidebar_activation.js"></script>
+        <script src="../js/login_button_state.js"></script>
+
+        <link rel="icon" href="../assets/images/logo_transparente.png" type="image/png">
+    </head>
+
+    <body>
+        <main class="bidding-page__container">
+            <header class="main-page__header">
+                <img src="../assets/icons/menu_bar.png" class="main-page__icon big-on-hover" onclick="sidebarToggle()"/>
+
+                <a href="../index.html">
+                    <img class="main-page__logo" src="../assets/images/logo_transparente.png">
+                </a>
+
+                <div class="search-bar-container">
+                    <form class="search-bar">
+                        <input type="text" class="search-input" placeholder="Search"/>
+                        <button type="submit" class="button__blue search-button ">
+                            <img src="../assets/icons/search_icon.png" class="search-icon big-on-hover">
+                        </button>
+                    </form>
+                </div>
+
+                <div class="main-page__login-register-container" id="main-page__login-register-container"> 
+                    <a href="../pages/login_page.html" class="nav-button-container button-text">
+                        <button class="button login-button ">Login</button>
+                    </a>
+
+                    <a href="../pages/register_page.html" class="nav-button-container button-text">
+                        <button class="button login-button ">Register</button>
+                    </a>
+                </div>
+            </header>
+
+            <div class="main-page__overlay" id="main-page__overlay" onclick="sidebarToggle()"></div>
+            <aside class="main-page__sidebar text text__white" id="main-page__sidebar">
+                <img src="../assets/icons/delete-sign.png" class="main-page__icon big-on-hover" onclick="sidebarToggle()">
+                <h3>Categories</h3>
+                <ul class="sidebar-list">
+                    <li>Category 1</li>
+                    <li>Category 2</li>
+                    <li>Category 3</li>
+                    <li>Category 4</li>
+                    <li>Category 5</li>
+                </ul>
+            </aside>
+
+            <main class="bidding-page">
+                    
+                <div class="images-container">
+                    <div class="principal-image">
+
+                        <div class="carrusel-images">
+                            <img src="../assets/images/bidding_example_watch/hamilton_1.png" class="carrusel-images">
+                            <img src="../assets/images/bidding_example_watch/hamilton_2.png" class="carrusel-images">
+                            <img src="../assets/images/bidding_example_watch/hamilton_3.png" class="carrusel-images">
+                        </div>
+                       
+                        <p>Principal image</p>
+                    </div>
+                    
+                    <div class="related-products__container">
+
+                        <hr class = "separator">
+                        <h2>Related products</h2>
+
+                        <div class="related-products__order">
+
+                            <div class="related-products__items">
+                                <img src="../assets/images/bidding_example_watch/related_1.png" class="related-products__items">
+                                <b>Khaki Field Murph Green-400$</b>
+                            </div>
+                            
+                            <div class="related-products__items">
+                                <img src="../assets/images/bidding_example_watch/related_2.png" class="related-products__items">
+                                <b>Khaki Field Murph Steel-900$</b>
+                            </div>
+
+                            <div class="related-products__items">
+                                <img src="../assets/images/bidding_example_watch/related_3.png" class="related-products__items">
+                                <b>Lotus Automatic Black-150$</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bidding-info__container">
+                    <div class="bidding-title">
+                        
+                        <div class="profile">
+                            <img src="../assets/images/bidding_example_watch/user_picture.png" class="profile-picture">
+                            <b>Mr. Peanuts</b>
+                        </div>
+
+                        <h1 class="item-name">Khaki Field Murph Auto</h1>
+                        
+                    </div>  
+
+                    <hr class = "separator">
+
+                    <div class="bidding-description">
+                        <ul>
+                            <li><b>Current bid value:</b> 750$</li>
+                            <li><b>Current Amount of bids:</b> 12 </li>
+                            <li><b>First bidding:</b> 2025/02/05 18:03</li>
+                            <li><b>Time until closing bidding:</b>0h 15min 12sec</li>
+                        </ul>
+
+                        <div class="bidding-buttons__container">
+                            <button class="button button__red">Bid</button>
+                            <button class="button button__blue">Follow bid</button>
+                        </div>
+                    </div>
+
+                    <hr class = "separator">
+
+                    <div class="item-info">
+                        <div class="shipment-info">
+                            <p><b>Origin:</b> Germany</p>
+                            <p><b>Shipment</b></p>
+                        </div>
+
+                        <div class="categories-info">
+                            <b>Categories:</b>
+                            <b class="categorie">Watch</b>
+                            <b class="categorie">Hamilton</b>
+                            <b class="categorie">Automatic</b>
+                        </div>
+
+                        <div class="item-description">
+                            <p><b>Condition:</b> New</p>
+                            <p><b>Description:</b> The Khaki Field Murph Auto 38mm is here.   
+                                One of the science fiction's most famous watches known  
+                                by fans as 'The Murph' is now housed in a compact 38mm 
+                                stainless steel case. Featuring ultra-readable black dial,     
+                                beige vintage-style Super-LumiNova® finished hands and 
+                                black leather strap, it reflects the key aesthetic codes of    
+                                its 42mm predecessor. Powered by the H-10 automatic      
+                                movement boasting an 80-hour power reserve, this Khaki  
+                                Field Murph Auto will capture the hearts of those who are  
+                                in love with smaller watches.</p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+
+            <footer class="main-page__footer">
+                <div class="main-page__footer-container">
+                    <div class="footer-section text text__white">
+                        <h4 class="text text__white">Buy</h4>
+                        <ul class="footer-list text__white">
+                            <li>Trending</li>
+                            <li>Category 1</li>
+                            <li>Category 2</li>
+                            <li>Category 3</li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section text text__white">
+                        <h4 class="text text__white">Sell</h4>
+                        <ul class="footer-list text__white">
+                            <li>Create listing</li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section text text__white">
+                        <h4>About Us</h4>
+                        <ul class="footer-list ">
+                            <li>Facebook</li>
+                            <li>Twitter</li>
+                        </ul>    
+                    </div>
+
+                </div>
+                <p class="text text__white">NaiveBay 2025 ©</p>
+            </footer>
+
+        </div>
+    </main>
+</html>
