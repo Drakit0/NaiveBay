@@ -1,11 +1,12 @@
 const setAppropriateLoginComponent = () => {
     const loginSpace = document.getElementById("main-page__login-container")
-    const userData = JSON.parse(localStorage.getItem('user'));
+    const userData = JSON.parse(localStorage.getItem("user"));
+    console.log(userData)
     if (userData){
         loginSpace.innerHTML = `
-        <h3 class="text text__white">${userData.userName}</h3>
+        <h3 class="text text__white">${userData.username}</h3>
         <a href="#">
-            <img src="assets/icons/menu_bar.png" class="main-page__icon big-on-hover"/>
+            <img src="./assets/icons/user_icon.png" class="main-page__icon big-on-hover"/>
         </a>
         `;
     }

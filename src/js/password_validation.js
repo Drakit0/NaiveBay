@@ -16,8 +16,12 @@ document.addEventListener("DOMContentLoaded",()=>
 
         if (inputUsername in users) {
             if (inputPassword === users[inputUsername]) {
-                localStorage.setItem("user", inputUsername);
-                localStorage.setItem("isLoggedIn", true);
+                const userData = {
+                    "username": inputUsername,
+                    "isLoggedIn" : true
+                }
+                localStorage.setItem("user", JSON.stringify(userData));
+                
                 location.href = "../index.html";
             } 
             else {
