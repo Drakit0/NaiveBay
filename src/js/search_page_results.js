@@ -32,14 +32,16 @@ function displayResults(products, order) {
 
     firstThree.forEach(product => {
         const productHTML = `
-            <div class="results-page__product">
-                <img class="results-page__product-image" src="${product.thumbnail}" alt="${product.title}">
-                <div class="results-page__product-info">
-                    <h3>${product.title}</h3>
-                    <p>${product.description}</p>
-                    <p><strong>Price: $${product.price}</strong></p>
+            <a href="bidding_page.html?id=${product.id}" class="text__not-link">
+                <div class="results-page__product border-on-hover--blue text ">
+                    <img class="results-page__product-image" src="${product.thumbnail}" alt="${product.title}">
+                    <div class="results-page__product-info">
+                        <h3>${product.title}</h3>
+                        <p>${product.description}</p>
+                        <p><strong>Price: $${product.price}</strong></p>
+                    </div>
                 </div>
-            </div>
+            </a>
         `;
         resultsList.innerHTML += productHTML;
     });
