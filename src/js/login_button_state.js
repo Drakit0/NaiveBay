@@ -15,6 +15,9 @@ const setAppropriateLoginComponent = () => {
         <a href="${baseURL}/src/pages/login_page.html" class="button-text">
             <button class="button login-button " >Login</button>
         </a>
+        <a href="${baseURL}/src/pages/register_page.html" class="nav-button-container button-text">
+            <button class="button login-button ">Register</button>
+        </a>
         `;
     }
 }
