@@ -87,3 +87,11 @@
     font-size: 0.8rem;
     
 }
+.border-on-hover--blue:hover{
+    border: #1F7896 solid 0.1rem;
+}
+
+.text__not-link{
+    text-decoration: none;
+    color: inherit;
+}
