@@ -5,27 +5,29 @@
         <title>NaiveBay</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Sergio Jimenez Romero">
-        <link rel="icon" href="assets/favicon/favicon.ico"/>
-        <link rel="stylesheet" href="css/components.css"/> 
-        <link rel="stylesheet" href="css/normalize.css"/> 
-        <link rel="stylesheet" href="css/main_page_components.css"/>
-        <script src="js/sidebar_activation.js"></script>
-        <script src="js/login_button_state.js"></script>
-        <script defer src="js/search_functionality.js"></script>
+        <link rel="icon" href="../assets/favicon/favicon.ico"/>
+        <link rel="stylesheet" href="../css/components.css"/> 
+        <link rel="stylesheet" href="../css/normalize.css"/> 
+        <link rel="stylesheet" href="../css/main_page_components.css"/>
+        <link rel="stylesheet" href="../css/results_page_components.css"/>
+        <script src="../js/sidebar_activation.js"></script>
+        <script src="../js/login_button_state.js"></script>
+        <script defer src="../js/search_functionality.js"></script>
+        <script defer src="../js/search_page_results.js"></script>
 
     </head>
     <body>
         <main class="main-page__container">
             <header class="main-page__header">
-                <img src="assets/icons/menu_bar.png" class="main-page__icon big-on-hover" onclick="sidebarToggle()"/>
-                <a href="index.html">
-                    <img class="main-page__logo" src="./assets/images/logo_transparente.png">
+                <img src="../assets/icons/menu_bar.png" class="main-page__icon big-on-hover" onclick="sidebarToggle()"/>
+                <a href="../index.html">
+                    <img class="main-page__logo" src="../assets/images/logo_transparente.png">
                 </a>
                 <div class="search-bar-container">
                     <form class="search-bar" id="search-bar">
-                        <input type="text" class="search-input" id="search-input" placeholder="Search" required/>
+                        <input type="text" class="search-input" id="search-input" placeholder="Search"/>
                         <button type="submit" class="button__blue search-button ">
-                            <img src="assets/icons/search_icon.png" class="search-icon big-on-hover">
+                            <img src="../assets/icons/search_icon.png" class="search-icon big-on-hover">
                         </button>
                     </form>
                 </div>
@@ -37,7 +39,7 @@
             </header>
             <div class="main-page__overlay" id="main-page__overlay" onclick="sidebarToggle()"></div>
             <aside class="main-page__sidebar text text__white" id="main-page__sidebar">
-                <img src="assets/icons/delete-sign.png" class="main-page__icon big-on-hover" onclick="sidebarToggle()">
+                <img src="../assets/icons/delete-sign.png" class="main-page__icon big-on-hover" onclick="sidebarToggle()">
                 <h3>Categories</h3>
                 <ul class="sidebar-list">
                     <li>Category 1</li>
@@ -49,13 +51,18 @@
             </aside>
             
             <section class="main-page__content">
-                 <div class="main-page__auction-list">
-                    <h2 class="text">Trending</h2>
-                    <!-- TODO: see if we include the items with JS -->
-                 </div>
-                 <div class="main-page__auction-list">
-                    <h2 class="text">Ending soon!</h2>
-                    <!-- TODO: see if we include the items with JS -->
+                 <div class="results-page__content text">
+                    <div class="results-page__filter-sidebar ">
+                        <label for="ordering">Order by:</label>
+                        <select name="ordering" id="ordering-select">
+                            <option value="relevance">Relevance</option>
+                            <option value="ascending-price">Ascending price</option>
+                            <option value="descending-price">Descending price</option>
+                        </select>
+                    </div>
+                    <div class="results-page__results" id="results-page__results">
+                        <h2>Placeholder</h2>
+                    </div>
                  </div>
             </section>
             <footer class="main-page__footer">
