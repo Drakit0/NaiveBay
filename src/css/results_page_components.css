@@ -30,9 +30,11 @@
 }
 .results-page__product-image{
     grid-column: 1;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    object-fit: cover;
 }
 .results-page__product-info{
     grid-column: 2;

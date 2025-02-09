@@ -12,6 +12,7 @@
         <script src="js/sidebar_activation.js"></script>
         <script src="js/login_button_state.js"></script>
         <script defer src="js/search_functionality.js"></script>
+        <script defer src="js/main_page_suggestion.js"></script>
 
     </head>
     <body>
@@ -50,11 +51,12 @@
             <section class="main-page__content">
                  <div class="main-page__auction-list">
                     <h2 class="text">Trending</h2>
-                    <!-- TODO: see if we include the items with JS -->
+                    <div class="main-page__products-container" id="main-page__trending"></div>
                  </div>
                  <div class="main-page__auction-list">
                     <h2 class="text">Ending soon!</h2>
-                    <!-- TODO: see if we include the items with JS -->
+                    <div class="main-page__products-container" id="main-page__ending"></div>
+                    
                  </div>
             </section>
             <footer class="main-page__footer">
