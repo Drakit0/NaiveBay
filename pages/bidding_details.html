@@ -11,84 +11,149 @@
         <link rel="stylesheet" href="../css/main_page_components.css">
         <link rel="stylesheet" href="../css/bidding_components.css">
 
+        <link rel="icon" href="assets/favicon/favicon.ico"/>
+        <link rel="stylesheet" href="css/components.css"/> 
+        <link rel="stylesheet" href="css/normalize.css"/> 
+        <link rel="stylesheet" href="css/main_page_components.css"/>
+        <script src="js/sidebar_activation.js"></script>
+        <script src="js/login_button_state.js"></script>
+
+
         <link rel="icon" href="../assets/images/logo_transparente.png" type="image/png">
     </head>
 
     <body>
-        <div class="main-page-container">
+        <main class="bidding-page__container">
+            <header class="main-page__header">
+                <img src="../assets/icons/menu_bar.png" class="main-page__icon big-on-hover" onclick="sidebarToggle()"/>
 
-            <header class="main-page-header"> <!-- Change for implementation -->
-                <div class="main-page-logo">
-                    <img src="../assets/images/logo_transparente.png" alt="Logo" class="main-page-icon">
-                </div>
+                <a href="../index.html">
+                    <img class="main-page__logo" src="../assets/images/logo_transparente.png">
+                </a>
 
                 <div class="search-bar-container">
-                    <div class="search-bar">
-                        <input type="text" class="search-input" placeholder="Search...">
-                        <button class="search-button">
-                            <img src="../assets/icons/search_icon.png" alt="🔍" class="search-icon">
+                    <form class="search-bar">
+                        <input type="text" class="search-input" placeholder="Search"/>
+                        <button type="submit" class="button__blue search-button ">
+                            <img src="../assets/icons/search_icon.png" class="search-icon big-on-hover">
                         </button>
-                    </div>
+                    </form>
                 </div>
 
-                <div class="main-page-login-register-container">
+                <div class="main-page__login-register-container" id="main-page__login-register-container"> 
                     <a href="../pages/login_page.html" class="nav-button-container button-text">
-                        <button class="button login-button ">Log in</button>
+                        <button class="button login-button ">Login</button>
                     </a>
+
                     <a href="../pages/register_page.html" class="nav-button-container button-text">
                         <button class="button login-button ">Register</button>
                     </a>
                 </div>
+
             </header>
 
-            <main class="main-page-content">
-                <section class="bidding-page">
+            <div class="main-page__overlay" id="main-page__overlay" onclick="sidebarToggle()"></div>
+            <aside class="main-page__sidebar text text__white" id="main-page__sidebar">
+                <img src="../assets/icons/delete-sign.png" class="main-page__icon big-on-hover" onclick="sidebarToggle()">
+                <h3>Categories</h3>
+                <ul class="sidebar-list">
+                    <li>Category 1</li>
+                    <li>Category 2</li>
+                    <li>Category 3</li>
+                    <li>Category 4</li>
+                    <li>Category 5</li>
+                </ul>
+            </aside>
+
+            <main class="bidding-page">
                     
-                    <div class="images-container">
-                        <div class="principal-image">
+                <div class="images-container">
+                    <div class="principal-image">
+
+                        <div class="carrusel-images">
                             <p>Carrusel images</p>
-                            <p>Principal image</p>
                         </div>
-                        
-                        <div class="related-product-images">
-                            <hr>
-                            <p>Related products</p>
-                        </div>
-
+                       
+                        <p>Principal image</p>
                     </div>
+                    
+                    <div class="related-products__container">
 
-                    <div class="bidding-info-container">
-                        <div class="bidding-name">
-                            <h1>Item name</h1>
-                        </div>  
+                        <hr class = "separator">
+                        <p>Related products</p>
 
-                        <div class="bidding-description">
-                            <hr>
-                            <p>bidding description</p>
+                        <div class="related-products__order">
 
-                            <div class=""bidding-buttons-container>
-                                <button class="button">Bid</button>
-                                <button class="button">Follow bid</button>
+                            <div class="related-products__items">
+                                <p>Related 1</p>
+                            </div>
+                            
+                            <div class="related-products__items">
+                                <p>Related 2</p>
+                            </div>
+
+                            <div class="related-products__items">
+                                <p>Related 3</p>
                             </div>
                         </div>
-
-                        <div class="item-info">
-                            <hr>
-                            <p>Item info</p>
-                        </div>
-
                     </div>
 
-                </section>
+                </div>
+
+                <div class="bidding-info-container">
+                    <div class="bidding-name">
+                        <h1>Item name</h1>
+                    </div>  
+
+                    <div class="bidding-description">
+                        <hr class = "separator">
+                        <p>bidding description</p>
+
+                        <div class="bidding-buttons__container">
+                            <button class="button button__red">Bid</button>
+                            <button class="button button__blue">Follow bid</button>
+                        </div>
+                    </div>
+
+                    <div class="item-info">
+                        <hr class = "separator">
+                        <p>Item info</p>
+                    </div>
+
+                </div>
             </main>
 
+            <footer class="main-page__footer">
+                <div class="main-page__footer-container">
+                    <div class="footer-section text text__white">
+                        <h4 class="text text__white">Buy</h4>
+                        <ul class="footer-list text__white">
+                            <li>Trending</li>
+                            <li>Category 1</li>
+                            <li>Category 2</li>
+                            <li>Category 3</li>
+                        </ul>
+                    </div>
 
-            <footer class="main-page-footer">
-                <div class="main-page-footer-container">
-                    <p>NaiveBay 2025 ©</p>
+                    <div class="footer-section text text__white">
+                        <h4 class="text text__white">Sell</h4>
+                        <ul class="footer-list text__white">
+                            <li>Create listing</li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section text text__white">
+                        <h4>About Us</h4>
+                        <ul class="footer-list ">
+                            <li>Facebook</li>
+                            <li>Twitter</li>
+                        </ul>    
+                    </div>
+
                 </div>
+                <p class="text text__white">NaiveBay 2025 ©</p>
             </footer>
 
         </div>
-    </body>
+    </main>
 </html>
