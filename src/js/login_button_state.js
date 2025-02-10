@@ -3,7 +3,7 @@ const setAppropriateLoginComponent = () => {
     const userData = JSON.parse(localStorage.getItem("user"));
     const currentPath = location.pathname;
     const isInsidePages = currentPath.includes("/pages/");
-    const targetPathAssets = isInsidePages ? "" : "../";
+    const targetPathAssets = isInsidePages ? "../" : "";
     const targetPath = isInsidePages ? "" : "pages/";
     if (userData){
         loginSpace.innerHTML = `
