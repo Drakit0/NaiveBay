@@ -8,7 +8,8 @@ import { Button } from "@mui/material"
 import { useButtonTheme } from "../../../components/Contexts/ButtonThemeProvider"
 import LoginLinks from "../../../components/LoginLinks/LoginLinks"
 import LoginFooter from "../../../components/LoginFooter/LoginFooter"
-import { useState } from "react"
+import usePasswordValidation from "./hooks"
+
 const { default: LoginPageTemplate } = require("../../../components/LoginPageTemplate/LoginPageTemplate")
 
 const loginLinks = {
@@ -24,18 +25,25 @@ const formInfo = {
 
 const Login = () => {
     const { theme } = useButtonTheme();
-    const [errorMessage, setErrorMessage] = useState("")
+    const [errorMessage, validateForm] = usePasswordValidation()
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        const formData = new FormData(event.target)
+        console.log(formData)
+        validateForm(formData)
+    }
     return (
         <main className={styles.main}>
             <LoginPageTemplate>
 
                 <div className={styles.container}>
-                    <Image className="login__logo" src="/images/logo_transparente.png" alt='' width={100} height={100} />
+                    <Image src="/images/logo_transparente.png" alt='' width={160} height={150} />
                     <LoginPageTitle>Sign in to your account</LoginPageTitle>
 
 
                     {errorMessage !== "" ? <p className={styles.redText}>{errorMessage}</p> : <p />}
-                    <form className="login__form" id="login__form">
+                    <form className="login__form" id="login__form" >
                         <input
                             className="text-input"
                             type="text"
