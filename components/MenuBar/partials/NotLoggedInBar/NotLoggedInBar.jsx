@@ -1,12 +1,15 @@
 import styles from "./styles.module.css"
-const { Button } = require("@mui/material")
+import theme from "./utils"
+const { Button, ThemeProvider } = require("@mui/material")
 
 const NotLoggedInBar = () => {
     return (
     <>
     {/* TODO: change to something more easily scaled */}
-        <Button href="/login" variant="contained">Login</Button>
-        <Button href="/register" variant="contained">Register</Button>
+        <ThemeProvider theme={theme}>
+            <Button href="/login" variant="contained">Login</Button>
+            <Button href="/register" variant="contained">Register</Button>
+        </ThemeProvider>
     </>
     )
 }

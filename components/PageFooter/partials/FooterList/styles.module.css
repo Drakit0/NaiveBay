@@ -1,0 +1,19 @@
+.footerSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    gap: 0.5rem;
+
+}
+.footerList{
+    list-style-type: none;
+    padding: 0rem;
+    margin: 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    font-size: 0.8rem;
+    
+}
+
