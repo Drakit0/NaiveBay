@@ -1,8 +1,11 @@
+import { useButtonTheme } from "../../../Contexts/ButtonThemeProvider"
 import styles from "./styles.module.css"
-import theme from "./utils"
 const { Button, ThemeProvider } = require("@mui/material")
 
+
 const NotLoggedInBar = () => {
+    const {theme} = useButtonTheme()
+
     return (
     <>
         <ThemeProvider theme={theme}>

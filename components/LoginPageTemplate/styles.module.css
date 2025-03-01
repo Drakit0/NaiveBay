@@ -5,6 +5,7 @@
     margin: 0px;
     display: grid;
     grid-template-columns: 65% 35%;
+    justify-items: center;
     background-color: white;
     color: black;
 }
@@ -17,6 +18,8 @@
 .infoContainer{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     gap: 1rem;
     width: 60%;
