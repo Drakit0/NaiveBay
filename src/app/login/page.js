@@ -9,6 +9,7 @@ import { useButtonTheme } from "../../../components/Contexts/ButtonThemeProvider
 import LoginLinks from "../../../components/LoginLinks/LoginLinks"
 import LoginFooter from "../../../components/LoginFooter/LoginFooter"
 import usePasswordValidation from "./hooks"
+import LoginForm from "../../../components/LoginForm/LoginForm"
 
 const { default: LoginPageTemplate } = require("../../../components/LoginPageTemplate/LoginPageTemplate")
 
@@ -25,14 +26,13 @@ const formInfo = {
 
 const Login = () => {
     const { theme } = useButtonTheme();
-    const [errorMessage, validateForm] = usePasswordValidation()
+    const [errorMessage, validateForm] = usePasswordValidation();
 
     const handleSubmit = (event) => {
         event.preventDefault()
         const formData = new FormData(event.target)
-        console.log(formData)
         validateForm(formData)
-    }
+    };
     return (
         <main className={styles.main}>
             <LoginPageTemplate>
@@ -43,7 +43,9 @@ const Login = () => {
 
 
                     {errorMessage !== "" ? <p className={styles.redText}>{errorMessage}</p> : <p />}
-                    <form className="login__form" id="login__form" >
+                    <LoginForm formStructure={formInfo} submitHandler={handleSubmit} />
+
+                    {/* <form className="login__form" id="login__form" >
                         <input
                             className="text-input"
                             type="text"
@@ -63,7 +65,7 @@ const Login = () => {
                             type="submit"
                             defaultValue="Login"
                         />
-                    </form>
+                    </form> */}
                     <ThemeProvider theme={theme}>
                         <Button href="/" variant="contained">Back</Button>
 
@@ -76,7 +78,7 @@ const Login = () => {
 
             </LoginPageTemplate>
         </main>
-    )
+    );
 }
 
 export default Login
