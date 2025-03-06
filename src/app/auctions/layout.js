@@ -1,13 +1,12 @@
 import MainPageTemplate from "../../../components/MainPageTemplate/MainPageTemplate"
 import styles from "./page.module.css"
 
-const Auctions = () => {
-
+const AuctionLayout = () => {
     return (
         <main className={styles.main}>
 
             <MainPageTemplate>
-                <h1>Hola</h1>
+
             </MainPageTemplate>
 
 
@@ -15,4 +14,4 @@ const Auctions = () => {
     )
 }
 
-export default Auctions
+export default AuctionLayout
