@@ -9,7 +9,7 @@ const UseDummyJSONAPI = () => {
         const url = new URL(`${API_URL}${subdomain}`)
 
         if (params) {
-            Object.entries(params).foreach(([key, value]) => {
+            Object.entries(params).forEach(([key, value]) => {
                 url.searchParams.append(key, value);
             });
         };

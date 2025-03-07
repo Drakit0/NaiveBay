@@ -8,10 +8,3 @@
     margin: 3rem;
     padding: 2rem;
 }
-.filterSidebar{
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
