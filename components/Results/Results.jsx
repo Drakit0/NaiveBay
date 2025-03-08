@@ -1,13 +1,13 @@
 import useProductFilter from "../../hooks/useProductFIlter";
 import FilterBar from "../FilterBar/FilterBar";
-import getFilterConfig from "../FilterBar/utils";
+import useFilterConfig from "./hooks";
 import ResultsProductGrid from "../ResultsProductGrid/ResultsProductGrid";
 import styles from "./styles.module.css";
 
 const Results = ({ initialProducts }) => {
   const { products, filterValues, handleFilterChange } =
     useProductFilter(initialProducts);
-  const filters = getFilterConfig();
+  const filters = useFilterConfig();
 
   return (
     <div className={styles.content}>

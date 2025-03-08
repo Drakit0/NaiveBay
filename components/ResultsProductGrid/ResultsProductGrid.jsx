@@ -1,6 +1,7 @@
 import DetailedProductCard from "../DetailedProductCard/DetailedProductCard";
 import styles from "./styles.module.css";
 
+//TODO: show number of results
 const ResultsProductGrid = ({ products }) => {
   return (
     <div className={styles.resultsGrid}>

@@ -1,4 +1,8 @@
-const getFilterConfig = () => {
+import useCategories from "../../hooks/useCategories";
+
+const useFilterConfig = () => {
+  const categories = useCategories();
+  console.log("Categories in useFilterConfig:", categories);
   return {
     ordering: {
       type: "option",
@@ -6,9 +10,9 @@ const getFilterConfig = () => {
       options: ["Relevance", "Ascending", "Descending"],
     },
     category: {
-      type: "radio",
+      type: "option",
       text: "Select Category",
-      options: ["Smartphones", "Laptops", "Accessories"],
+      options: categories,
     },
     priceRange: {
       type: "slider",
@@ -19,4 +23,4 @@ const getFilterConfig = () => {
   };
 };
 
-export default getFilterConfig;
+export default useFilterConfig;

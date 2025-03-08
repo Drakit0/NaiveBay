@@ -1,15 +1,25 @@
+"use client";
+
 import { Slider } from "@mui/material";
 import { useState } from "react";
+import Filter from "../Filter/Filter";
 
-const SliderFilter = () => {
-  const [value, setValue] = useState([0, 1000]);
+const SliderFilter = ({ filterName, filterTitle, min, max, handleChange }) => {
+  const [value, setValue] = useState([min, max]);
 
-  const handleChange = (event, newValue) => {
+  const handleSliderChange = (event, newValue) => {
     setValue(newValue);
+    handleChange("slider", newValue);
   };
 
   return (
-    <Slider value={value} onChange={handleChange} valueLabelDisplay="auto" />
+    <Filter filterName={filterName} filterTitle={filterTitle}>
+      <Slider
+        value={value}
+        onChange={handleSliderChange}
+        valueLabelDisplay="auto"
+      />
+    </Filter>
   );
 };
 

@@ -41,8 +41,7 @@ const FilterBar = ({ filters, filterValues, onFilterChange }) => {
                 filterTitle={filter.text}
                 min={filter.min || 0}
                 max={filter.max || 1000}
-                value={filterValues[key]}
-                handleChange={(e) => onFilterChange(key, e[value])}
+                handleChange={(e) => onFilterChange(key, e)}
               />
             );
           default:
