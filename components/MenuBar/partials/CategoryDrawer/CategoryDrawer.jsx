@@ -15,8 +15,9 @@ const CategoryDrawer = () => {
     setOpen(!open);
   };
 
-  // Prevent drawer from closing when clicking on text fields
-  const handleCategoryFieldClick = (event) => {
+  // Prevent drawer from closing when clicking on somthing inside it
+  // unused for now
+  const handleFieldClick = (event) => {
     event.stopPropagation();
   };
 
@@ -41,6 +42,8 @@ const CategoryDrawer = () => {
             <CloseIcon className={`${styles.bigOnHover} `} />
           </IconButton>
         </div>
+        <h3>Category 1</h3>
+        <h3>Category 2</h3>
       </Drawer>
     </>
   );
