@@ -1,0 +1,83 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+    
+  .textInput {
+    border: none;
+    border-bottom: 0.2rem solid #1F7896;
+    margin: 0.5rem 0;
+    width: 100%;
+    /* padding: 0.4rem; */
+  }
+  
+  .textInput:focus {
+    outline: 0.1rem solid #1F7896;
+  }
+  
+  .button {
+    padding: 0.8rem 1.6rem;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  .buttonBlue {
+    background-color: #1F4452;
+    color: white;
+  }
+  
+  .buttonBlue:hover {
+    background-color: #1F7896;
+  }
+  
+  .registerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 1rem; */
+    width: 100%;
+    max-width: 600px;
+
+  }
+  
+  .nameContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .addressContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .postalCodeContainer {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .dateSelector {
+    margin: 1rem;
+  }
+  
+  .error {
+    color: red;
+    font-weight: 500;
+  }
+  
