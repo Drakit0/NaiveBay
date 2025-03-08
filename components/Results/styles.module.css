@@ -1,10 +1,11 @@
 .content{
     display: grid;
-    grid-template-columns: 10%, 90%;
+    grid-template-columns: 15% 85%;
     width: 80vw;
     gap: 1rem;
     border-radius: 1rem;
     background-color: #e0e0e0;
     margin: 3rem;
     padding: 2rem;
+    color: black;
 }

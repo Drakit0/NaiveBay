@@ -1,8 +1,10 @@
-import { useState } from "react";
-import SelectFilter from "../SelectFilter/SelectFilter";
+import useProductFilter from "../../hooks/useProductFIlter";
+import FilterBar from "../FilterBar/FilterBar";
+import getFilterConfig from "../FilterBar/utils";
+import ResultsProductGrid from "../ResultsProductGrid/ResultsProductGrid";
 import styles from "./styles.module.css";
 
-const Results = ({ products }) => {
+const Results = ({ initialProducts }) => {
   const { products, filterValues, handleFilterChange } =
     useProductFilter(initialProducts);
   const filters = getFilterConfig();
@@ -14,7 +16,7 @@ const Results = ({ products }) => {
         filterValues={filterValues}
         onFilterChange={handleFilterChange}
       />
-      <div className="results-page__results" id="results-page__results"></div>
+      <ResultsProductGrid products={products} />
     </div>
   );
 };

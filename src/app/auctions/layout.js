@@ -1,17 +1,12 @@
-import MainPageTemplate from "../../../components/MainPageTemplate/MainPageTemplate"
-import styles from "./page.module.css"
+import MainPageTemplate from "../../../components/MainPageTemplate/MainPageTemplate";
+import styles from "./page.module.css";
 
-const AuctionLayout = () => {
-    return (
-        <main className={styles.main}>
+const AuctionLayout = ({ children }) => {
+  return (
+    <main className={styles.main}>
+      <MainPageTemplate>{children}</MainPageTemplate>
+    </main>
+  );
+};
 
-            <MainPageTemplate>
-
-            </MainPageTemplate>
-
-
-        </main>
-    )
-}
-
-export default AuctionLayout
+export default AuctionLayout;

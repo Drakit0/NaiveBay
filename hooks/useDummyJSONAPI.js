@@ -1,24 +1,25 @@
 import { useCallback } from "react";
 
-
-
 const API_URL = "https://dummyjson.com/products/";
 
 const UseDummyJSONAPI = () => {
-    const get = useCallback(async (subdomain, params) => {
-        const url = new URL(`${API_URL}${subdomain}`)
+  const get = useCallback(async (subdomain, params) => {
+    const url = new URL(`${API_URL}${subdomain}`);
 
-        if (params) {
-            Object.entries(params).forEach(([key, value]) => {
-                url.searchParams.append(key, value);
-            });
-        };
+    if (params) {
+      Object.entries(params).forEach(([key, value]) => {
+        url.searchParams.append(key, value);
+      });
+    }
 
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-    }, []);
-    return { get };
+    const response = await fetch(url);
+    if (!response.ok) {
+      return null;
+    }
+    const data = await response.json();
+    return data;
+  }, []);
+  return { get };
 };
 
-export default UseDummyJSONAPI
+export default UseDummyJSONAPI;

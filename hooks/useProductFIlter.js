@@ -18,6 +18,7 @@ const useProductFilter = (initialProducts) => {
   };
 
   useEffect(() => {
+    console.log({ initialProducts });
     let filteredProducts = [...initialProducts];
 
     if (filterValues.category) {

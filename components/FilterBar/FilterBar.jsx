@@ -1,6 +1,7 @@
 import React from "react";
 import SelectFilter from "../SelectFilter/SelectFilter";
 import styles from "./styles.module.css";
+import SliderFilter from "../SliderFilter/SliderFilter";
 
 const FilterBar = ({ filters, filterValues, onFilterChange }) => {
   return (
@@ -21,27 +22,27 @@ const FilterBar = ({ filters, filterValues, onFilterChange }) => {
                 handleChange={(e) => onFilterChange(key, e.target.value)}
               />
             );
-          case "radio":
-            return (
-              <RadioFilter
-                key={`${key}-${index}`}
-                filterName={key}
-                filterTitle={filter.text}
-                options={filter.options}
-                selectedValue={filterValues[key]}
-                handleChange={(value) => onFilterChange(key, value)}
-              />
-            );
+          // case "radio":
+          //   return (
+          //     <RadioFilter
+          //       key={`${key}-${index}`}
+          //       filterName={key}
+          //       filterTitle={filter.text}
+          //       options={filter.options}
+          //       selectedValue={filterValues[key]}
+          //       handleChange={(value) => onFilterChange(key, value)}
+          //     />
+          //   );
           case "slider":
             return (
               <SliderFilter
                 key={`${key}-${index}`}
                 filterName={key}
                 filterTitle={filter.text}
-                min={filter.min}
-                max={filter.max}
+                min={filter.min || 0}
+                max={filter.max || 1000}
                 value={filterValues[key]}
-                handleChange={(value) => onFilterChange(key, value)}
+                handleChange={(e) => onFilterChange(key, e[value])}
               />
             );
           default:
