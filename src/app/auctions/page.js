@@ -1,18 +1,14 @@
-import MainPageTemplate from "../../../components/MainPageTemplate/MainPageTemplate"
-import styles from "./page.module.css"
+"use client";
 
-const Login = () => {
+import Results from "../../../components/Results/Results";
+import { useSearchParams } from "next/navigation";
+import useProducts from "../../../hooks/useProducts";
 
-    return (
-        <main className={styles.main}>
+const Auctions = () => {
+  const searchParams = useSearchParams();
+  const products = useProducts("search", searchParams);
 
-            <MainPageTemplate>
-                <h1>Hola</h1>
-            </MainPageTemplate>
+  return <Results initialProducts={products} />;
+};
 
-
-        </main>
-    )
-}
-
-export default Login
+export default Auctions;
