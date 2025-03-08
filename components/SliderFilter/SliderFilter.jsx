@@ -9,7 +9,7 @@ const SliderFilter = ({ filterName, filterTitle, min, max, handleChange }) => {
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
-    handleChange("slider", newValue);
+    handleChange(newValue);
   };
 
   return (
@@ -18,6 +18,8 @@ const SliderFilter = ({ filterName, filterTitle, min, max, handleChange }) => {
         value={value}
         onChange={handleSliderChange}
         valueLabelDisplay="auto"
+        min={min}
+        max={max}
       />
     </Filter>
   );

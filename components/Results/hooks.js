@@ -12,7 +12,7 @@ const useFilterConfig = () => {
     category: {
       type: "option",
       text: "Select Category",
-      options: categories,
+      options: ["All"].concat(categories),
     },
     priceRange: {
       type: "slider",

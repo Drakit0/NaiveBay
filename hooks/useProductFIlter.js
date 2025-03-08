@@ -4,7 +4,7 @@ const useProductFilter = (initialProducts) => {
   const [products, setProducts] = useState(initialProducts || []);
   const [filterValues, setFilterValues] = useState({
     ordering: "Relevance",
-    category: null,
+    category: "All",
     priceRange: [0, 1000],
   });
 
@@ -21,12 +21,12 @@ const useProductFilter = (initialProducts) => {
     console.log({ initialProducts });
     let filteredProducts = [...initialProducts];
 
-    if (filterValues.category) {
+    if (filterValues.category && filterValues.category !== "All") {
       filteredProducts = filteredProducts.filter(
         (product) => product.category === filterValues.category
       );
     }
-
+    console.log(filterValues.priceRange);
     filteredProducts = filteredProducts.filter(
       (product) =>
         product.price >= filterValues.priceRange[0] &&

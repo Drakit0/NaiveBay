@@ -2,13 +2,19 @@ import Filter from "../Filter/Filter";
 
 const { MenuItem, Select } = require("@mui/material");
 
-const SelectFilter = ({ filterName, filterTitle, options, handleChange }) => {
+const SelectFilter = ({
+  filterName,
+  filterTitle,
+  options,
+  selectedValue = "",
+  handleChange,
+}) => {
   return (
     <Filter filterName={filterName} filterTitle={filterTitle}>
       <Select
         labelId={`${filterName}-label`}
         id={filterName}
-        value={""}
+        value={selectedValue}
         label={filterTitle}
         onChange={handleChange}
       >
