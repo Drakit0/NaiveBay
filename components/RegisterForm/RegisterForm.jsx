@@ -1,5 +1,7 @@
-import useRegisterValidation from "../../src/app/register/hooks";
 import styles from "./RegisterForm.module.css";
+import { Button, ThemeProvider } from "@mui/material";
+import {useButtonTheme} from "../Contexts/ButtonThemeProvider";
+import useRegisterValidation from "../../src/app/register/hooks";
 
 const {useState} = require("react");
 
@@ -9,6 +11,8 @@ const communityCities = {
 };
 
 export default function RegisterForm() {
+
+  const { theme } = useButtonTheme();
   const [errorMessage, validateForm] = useRegisterValidation();
 
   const [selectedCommunity, setSelectedCommunity] = useState("");
@@ -70,8 +74,12 @@ export default function RegisterForm() {
 
       <input className={styles.dateSelector} type="date" name="birthdate" required/>
 
-      <input className={`${styles.button} ${styles.buttonBlue}`} type="submit" value="Register"/>
-      <input className={`${styles.button} ${styles.buttonGray}`} type="submit" value="Register"/>
+      <ThemeProvider theme={theme}>
+            <Button variant="contained" type="submit">
+              Register
+            </Button>
+      </ThemeProvider>
+      
     </form>
   );
 }
