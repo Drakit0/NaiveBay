@@ -1,11 +1,26 @@
 import { Typography } from "@mui/material";
-// import styles from "./styles.module.css"
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./styles.module.css";
 
 const LoggedInBar = ({ username }) => {
-  <>
-    <Typography variant="h1">{username}</Typography>
-    <Image src="/icons/user_icon.png" href="/user" />
-  </>;
+  return (
+    <>
+      <div className={styles.iconContainer}>
+        <Typography variant="h5">{username}</Typography>
+      </div>
+
+      <Link href="/user" className={styles.iconContainer}>
+        <Image
+          src="/icons/user_icon.png"
+          width={100}
+          height={100}
+          alt=""
+          className={styles.icon}
+        />
+      </Link>
+    </>
+  );
 };
 
 export default LoggedInBar;

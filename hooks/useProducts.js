@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import useDummyJSONAPI from "./useDummyJSONAPI";
 
@@ -14,7 +16,7 @@ const useProducts = (endpoint, searchParams) => {
         if (!params["limit"]) {
           params["limit"] = 0;
         }
-
+        console.log({ params, endpoint });
         const data = await get(endpoint, params);
 
         if (data && data.products) {

@@ -1,18 +1,23 @@
+"use client";
+
 import styles from "./page.module.css";
 import MainPageTemplate from "../../components/MainPageTemplate/MainPageTemplate";
-
+import SuggestedProducts from "../../components/SuggestedProducts/SuggestedProducts";
+import useProducts from "../../hooks/useProducts";
 
 export default function Home() {
-  return (<>
-    {/* <div className={styles.page}> */}
-
-    <main className={styles.main}>
-
-      <MainPageTemplate>
-        <h1>Hola</h1>
-      </MainPageTemplate>
-
-    </main>
-  </>
+  const products = useProducts("");
+  return (
+    <>
+      <main className={styles.main}>
+        <MainPageTemplate>
+          <SuggestedProducts title="Trending" products={products.slice(0, 5)} />
+          <SuggestedProducts
+            title="Ending Soon"
+            products={products.slice(5, 10)}
+          />
+        </MainPageTemplate>
+      </main>
+    </>
   );
 }

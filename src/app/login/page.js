@@ -21,7 +21,7 @@ const loginLinks = {
 };
 
 const formInfo = {
-  Email: { type: "email" },
+  Username: { type: "Text" },
   Password: { type: "password" },
   Login: { type: "submit" },
 };
@@ -33,7 +33,12 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    validateForm(formData);
+    const formObject = Object.fromEntries(formData);
+    const cleanedForm = {
+      username: formObject.Username?.trim().toLowerCase() || "",
+      password: formObject.Password || "",
+    };
+    validateForm(cleanedForm);
   };
   return (
     <main className={styles.main}>
