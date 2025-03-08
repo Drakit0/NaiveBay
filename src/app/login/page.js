@@ -21,7 +21,7 @@ const loginLinks = {
 };
 
 const formInfo = {
-  Username: { type: "text" },
+  Email: { type: "email" },
   Password: { type: "password" },
   Login: { type: "submit" },
 };
@@ -54,27 +54,6 @@ const Login = () => {
           )}
           <LoginForm formStructure={formInfo} submitHandler={handleSubmit} />
 
-          {/* <form className="login__form" id="login__form" >
-                        <input
-                            className="text-input"
-                            type="text"
-                            id="Username"
-                            name="Username"
-                            placeholder="Username"
-                        />
-                        <input
-                            className="text-input"
-                            type="password"
-                            id="Password"
-                            name="Password"
-                            placeholder="Password"
-                        />
-                        <input
-                            className="button login__button button__blue"
-                            type="submit"
-                            defaultValue="Login"
-                        />
-                    </form> */}
           <ThemeProvider theme={theme}>
             <Button href="/" variant="contained">
               Back
