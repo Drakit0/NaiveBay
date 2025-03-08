@@ -13,13 +13,13 @@ const Auctions = () => {
   useEffect(() => {
     const getProductData = async () => {
       try {
-        const productData = await get(
-          "search",
-          Object.fromEntries(searchParams.entries())
-        );
+        const params = Object.fromEntries(searchParams.entries());
+        params.limit = 0;
+        const productData = await get("search", params);
         if (productData) {
           setProducts(productData.products);
         }
+        console.log(productData.products.length);
       } catch (e) {
         console.error("Error fetching product data:", e);
       }
