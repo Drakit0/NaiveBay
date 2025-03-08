@@ -1,16 +1,15 @@
 const { useState, useEffect } = require("react");
 
-
 const useUserData = () => {
-    const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(null);
 
-    useEffect(() => {
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-            setUserData(JSON.parse(storedUser));
-        }
-    }, []);
-    return [userData, setUserData];
-}
+  useEffect(() => {
+    const storedUser = localStorage.getItem("username");
+    if (storedUser) {
+      setUserData(storedUser);
+    }
+  }, []);
+  return [userData, setUserData];
+};
 
 export default useUserData;
