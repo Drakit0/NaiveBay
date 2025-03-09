@@ -34,29 +34,24 @@ const UserDetail = () => {
       });
     } catch (error) {
       console.error("Error al obtener los datos del usuario:", error);
-      // Manejo de error (mostrar mensaje, redirigir, etc.)
     }
   };
 
-  // 2. Envía los datos actualizados usando updateUserProfile de utils.js
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { // Form submit handler
     e.preventDefault();
     try {
       const accessToken = localStorage.getItem("accessToken");
       const updatedData = await updateUserProfile(accessToken, formData);
 
-      console.log("Datos actualizados:", updatedData);
-      alert("Perfil actualizado correctamente");
-      // Si quieres, puedes volver a cargar datos o hacer otras acciones
-      // fetchUserData();
+      console.log("Updated data:", updatedData);
+      alert("Data updated successfully!");
+
     } catch (error) {
-      console.error("Error al actualizar el perfil de usuario:", error);
-      // Manejo de error
+      console.error("Uncapable of updating the data:", error);
     }
   };
 
-  // Maneja los cambios en los inputs
-  const handleChange = (e) => {
+  const handleChange = (e) => { // Input changes handler
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -69,7 +64,7 @@ const UserDetail = () => {
       <h2>Perfil de Usuario</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Nombre de usuario</label>
+          <label>User Name</label>
           <input
             type="text"
             name="username"
@@ -79,7 +74,7 @@ const UserDetail = () => {
         </div>
 
         <div>
-          <label>Correo</label>
+          <label>Mail</label>
           <input
             type="email"
             name="email"
@@ -88,7 +83,55 @@ const UserDetail = () => {
           />
         </div>
 
-        {/* Otros campos que uses en tu perfil/registro */}
+        <div>
+          <label>First Name</label>
+          <input
+            type="text"
+            name="first_name"
+            value={formData.first_name}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <label>Last Name</label>
+          <input
+            type="text"
+            name="last_name"
+            value={formData.last_name}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <label>Birth Date</label>
+          <input
+            type="date"
+            name="birth_date"
+            value={formData.birth_date}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <label>Locality</label>
+          <input
+            type="text"
+            name="locality"
+            value={formData.locality}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <label>Municipality</label>
+          <input
+            type="text"
+            name="municipality"
+            value={formData.municipality}
+            onChange={handleChange}
+          />
+        </div>
 
         <button type="submit">Guardar Cambios</button>
       </form>
