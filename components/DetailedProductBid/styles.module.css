@@ -27,6 +27,8 @@
 
 .principal-image img {
     width: 60%;
+    height: 100%;
+    object-fit: contain;
 }
   
 .displayed-image {
