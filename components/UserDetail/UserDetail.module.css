@@ -1,0 +1,49 @@
+.user-details-container {
+    width: 100%;
+    background-image: url('/images/cabin.png');
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+  
+.user-details-box {
+    background-color: rgba(245, 245, 220, 0.9); 
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+.user-details-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+.form-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+    
+}
+  
+.form-row label {
+    flex: 0 0 120px;
+    text-align: right;
+    margin-right: 0.5rem;
+    font-weight: 500;
+}
+
+.form-row input {
+    flex: 1;
+    padding: 0.25rem;
+    background-color: white;
+    color: black;
+}
+  

@@ -1,0 +1,248 @@
+.bidding-page {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+    color: black;
+}
+  
+.images-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    gap:4rem;
+    grid-template-rows: 50% 40%;
+    justify-content: center;
+    align-content: center;
+    
+}
+
+.principal-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.principal-image img {
+    width: 60%;
+    height: 100%;
+    object-fit: contain;
+}
+  
+.displayed-image {
+    width: 35rem;
+    object-fit: cover;
+    margin-top: 2.5rem;
+    padding-left: 1.5rem;
+}
+  
+.carrusel-images {
+    background-color: #1F7896;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+  
+.carrusel-images img {
+    width: 40vw;
+    object-fit: cover;
+}
+  
+.related-products__container {
+    background-color: white;
+    gap: 1rem;
+    display: grid;
+    grid-template-rows: 10% 50%;
+    width: 90%;
+    border-radius: 0.4rem;
+    margin: 0 auto;
+    
+}
+  
+.related-products__container h2 {
+    padding-left: 1rem;
+}
+  
+.related-products__order {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    gap: 1rem;
+    width: 100%;
+    height: 60%;
+    margin-right: 1rem;
+    justify-content: center;
+}
+  
+.related-products__items {
+    border-radius: 0.4rem;
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 12vw;
+
+}
+  
+.related-products__items img {
+    width: 10vw;
+    object-fit: cover;
+}
+  
+.bidding-info__container {
+    width: 100%;
+    background-color: white;
+    border-radius: 0.4rem;
+}
+  
+.bidding-title {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    margin: 1rem;
+}
+
+.item-name {
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+  
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+.profile-picture {
+    max-height: 3rem;
+    object-fit: cover;
+}
+  
+.bidding-description {
+    justify-content: left;
+    align-items: left;
+    padding-left: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+  
+.bidding-buttons__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+}
+  
+.item-info {
+    padding-top: 1rem;
+    display: grid;
+    grid-template-rows: 10% 1% 60%;
+    gap: 2rem;
+}
+  
+.shipment-info {
+    width: 95%;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: left;
+}
+  
+.categories-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 1rem;
+    gap: 2rem;
+    width: 95%;
+}
+  
+.item-description {
+    width: 95%;
+    justify-content: left;
+    align-items: left;
+    padding-left: 1rem;
+}
+  
+.item-description p {
+    text-align: justify;
+    line-height: 1.6;
+}
+  
+.separator {
+    width: 95%;
+    height: 0.01rem;
+    margin-left: 1rem;
+    background-color: #0a3d62;
+    border: none;
+}
+
+.text-input {
+    border: none;
+    border-bottom: 0.2rem solid #1F7896;
+    padding: 0;
+    margin: 0.5rem;
+    width: 100%;
+}
+  
+.text-input:focus {
+    outline: 0.1rem solid #1F7896;
+}
+  
+.category {
+    background-color: rgba(10, 61, 98, 0.9);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+}
+  
+.button {
+    padding: 0.8rem 1.6rem;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+  
+.button__blue {
+    background-color: #1F4452;
+    color: white;
+}
+  
+.button__red {
+    background-color: #8e0000;
+    color: white;
+}
+  
+.button-text {
+    text-decoration: none;
+}
+  
+.button__blue:hover {
+    background-color: #1F7896;
+}
+  
+.button__red:hover {
+    background-color: #AC0202;
+}
+  
+.text {
+    font-family: 'Roboto', sans-serif;
+}
+  
+.text__white {
+    color: white;
+}
+  
+.text__red {
+    color: red;
+}
+  
