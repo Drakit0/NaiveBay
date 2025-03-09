@@ -1,5 +1,5 @@
 import MainPageTemplate from "../../../components/MainPageTemplate/MainPageTemplate";
-import UserDetail from "../../../components/UserDetail/UserDetail"; 
+import UserDetail from "../../../components/UserDetail/UserDetail";
 import styles from "./page.module.css";
 
 function Page() {

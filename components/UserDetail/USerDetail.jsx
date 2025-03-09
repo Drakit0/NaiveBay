@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { getUserProfile, updateUserProfile } from "../../src/app/user/utils"; 
 import styles from "./UserDetail.module.css";
+import React, {useState, useEffect} from "react";
+import {getUserProfile, updateUserProfile} from "../../src/app/user/utils"; 
 
 const UserDetail = () => {
   const [formData, setFormData] = useState({
