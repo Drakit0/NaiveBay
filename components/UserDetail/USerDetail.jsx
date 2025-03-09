@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { getUserProfile, updateUserProfile } from "../../src/app/user/utils"; 
+"use client";
+
+import React, {useState, useEffect} from "react";
+import {getUserProfile, updateUserProfile} from "../../src/app/user/utils"; 
 
 const UserDetail = () => {
   const [formData, setFormData] = useState({
@@ -61,79 +63,44 @@ const UserDetail = () => {
 
   return (
     <div>
-      <h2>Perfil de Usuario</h2>
+      <h2>User details</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>User Name</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
+          <label>User Name: </label>
+          <input type="text" name="username" value={formData.username} onChange={handleChange}/>
         </div>
 
         <div>
-          <label>Mail</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
+          <label>Mail: </label>
+          <input type="email" name="email" value={formData.email} onChange={handleChange} />
         </div>
 
         <div>
-          <label>First Name</label>
-          <input
-            type="text"
-            name="first_name"
-            value={formData.first_name}
-            onChange={handleChange}
-          />
+          <label>First Name: </label>
+          <input type="text" name="first_name" value={formData.first_name} onChange={handleChange} />
         </div>
 
         <div>
-          <label>Last Name</label>
-          <input
-            type="text"
-            name="last_name"
-            value={formData.last_name}
-            onChange={handleChange}
-          />
+          <label>Last Name: </label>
+          <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} />
         </div>
 
         <div>
-          <label>Birth Date</label>
-          <input
-            type="date"
-            name="birth_date"
-            value={formData.birth_date}
-            onChange={handleChange}
-          />
+          <label>Birth Date: </label>
+          <input type="date" name="birth_date" value={formData.birth_date} onChange={handleChange} />
         </div>
 
         <div>
-          <label>Locality</label>
-          <input
-            type="text"
-            name="locality"
-            value={formData.locality}
-            onChange={handleChange}
-          />
+          <label>Locality: </label>
+          <input type="text" name="locality" value={formData.locality} onChange={handleChange} />
         </div>
 
         <div>
-          <label>Municipality</label>
-          <input
-            type="text"
-            name="municipality"
-            value={formData.municipality}
-            onChange={handleChange}
-          />
+          <label>Municipality: </label>
+          <input type="text" name="municipality" value={formData.municipality} onChange={handleChange} />
         </div>
 
-        <button type="submit">Guardar Cambios</button>
+        <button type="submit">Save</button>
       </form>
     </div>
   );
