@@ -24,7 +24,7 @@ const DetailedProductCard = ({ product }) => {
         ];
 
   const brand = product?.brand || "Hamilton";
-  const tags = product?.tags ? product.tags.slice(0, 2) : [];
+  const tags = product?.tags ? product.tags.slice(1, 2) : [];
   const shippingInformation = product?.shippingInformation || "Shipment";
 
   return (
@@ -37,17 +37,16 @@ const DetailedProductCard = ({ product }) => {
             ))}
           </div> */}
 
-          <img src={images[0]} width={605} height={585} />
+          <img src={images[0]} width={450} height={450} />
 
         </div>
 
         <div className={styles["related-products__container"]}>
-          <hr className={styles.separator} />
           <h2>Related products</h2>
           <div className={styles["related-products__order"]}>
             <div className={styles["related-products__items"]}>
               <img
-                src="../../public/images/bidding_example_watch/related_1.png"
+                src="/images/bidding_example_watch/related_1.png"
                 alt="Related product 1"
                 className={styles["related-products__items"]}
               />
@@ -55,7 +54,7 @@ const DetailedProductCard = ({ product }) => {
             </div>
             <div className={styles["related-products__items"]}>
               <img
-                src="../../public/images/bidding_example_watch/related_2.png"
+                src="/images/bidding_example_watch/related_2.png"
                 alt="Related product 2"
                 className={styles["related-products__items"]}
               />
@@ -63,7 +62,7 @@ const DetailedProductCard = ({ product }) => {
             </div>
             <div className={styles["related-products__items"]}>
               <img
-                src="../../public/images/bidding_example_watch/related_3.png"
+                src="/images/bidding_example_watch/related_3.png"
                 alt="Related product 3"
                 className={styles["related-products__items"]}
               />
@@ -77,15 +76,13 @@ const DetailedProductCard = ({ product }) => {
         <div className={styles["bidding-title"]}>
           <div className={styles.profile}>
             <img
-              src="../../public/images/bidding_example_watch/user_picture.png"
+              src="/images/bidding_example_watch/user_picture.png"
               alt="User"
               className={styles["profile-picture"]}
             />
             <b>Mr. Peanuts</b>
           </div>
-          <h1 className={styles["item-name"]} id="item-name">
-            {title}
-          </h1>
+          <h1 className={styles["item-name"]} id="item-name">{title}</h1>
         </div>
 
         <hr className={styles.separator} />
@@ -106,16 +103,18 @@ const DetailedProductCard = ({ product }) => {
             </li>
           </ul>
 
-          {/* <div className={styles["bidding-buttons__container"]}>
-            <ThemeProvider theme={buttonTheme}>
-              <Button variant="contained" color="error">
-                Bid
-              </Button>
-              <Button variant="contained" color="primary">
-                Follow bid
-              </Button>
-            </ThemeProvider>
-          </div> */}
+          <div className={styles["bidding-buttons__container"]}> {/* Change this to a react component */}
+              {/* <ThemeProvider theme={buttonTheme}>
+                <Button variant="contained" color="error">
+                  Bid
+                </Button>
+                <Button variant="contained" color="primary">
+                  Follow bid
+                </Button>
+              </ThemeProvider> */}
+              <button className={`${styles.button} ${styles.button__red}`}>Bid</button> 
+              <button className={`${styles.button} ${styles.button__blue}`}>Follow bid</button>
+          </div>
 
         </div>
 
@@ -133,7 +132,7 @@ const DetailedProductCard = ({ product }) => {
           </div>
 
           <div className={styles["categories-info"]} id="categories-info">
-            <b>Categories:</b>
+            <b>Tags:</b>
             <b className={styles.category}>{brand}</b>
             <b className={styles.category}>{tags}</b>
             {product?.tags &&
