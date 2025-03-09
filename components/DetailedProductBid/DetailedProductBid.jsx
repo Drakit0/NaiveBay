@@ -18,7 +18,7 @@ const DetailedProductCard = ({ product }) => {
     product?.images && product.images.length > 0
       ? product.images
       : [
-          "./../../public/images/bidding_example_watch/hamilton_1.png",
+          "../../public/images/bidding_example_watch/hamilton_1.png",
           "../../public/images/bidding_example_watch/hamilton_2.png",
           "../../public/images/bidding_example_watch/hamilton_3.png",
         ];
@@ -31,11 +31,14 @@ const DetailedProductCard = ({ product }) => {
     <main className={`${styles["bidding-page"]} ${styles.text}`}>
       <div className={styles["images-container"]}>
         <div className={styles["principal-image"]}>
-          <div className={styles["carrusel-images"]}>
+          {/* <div className={styles["carrusel-images"]}>
             {images.map((imgSrc, index) => (
               <img key={index} src={imgSrc} alt={`Product image ${index + 1}`} />
             ))}
-          </div>
+          </div> */}
+
+          <img src={images[0]} width={605} height={585} />
+
         </div>
 
         <div className={styles["related-products__container"]}>
@@ -103,7 +106,7 @@ const DetailedProductCard = ({ product }) => {
             </li>
           </ul>
 
-          <div className={styles["bidding-buttons__container"]}>
+          {/* <div className={styles["bidding-buttons__container"]}>
             <ThemeProvider theme={buttonTheme}>
               <Button variant="contained" color="error">
                 Bid
@@ -112,7 +115,7 @@ const DetailedProductCard = ({ product }) => {
                 Follow bid
               </Button>
             </ThemeProvider>
-          </div>
+          </div> */}
 
         </div>
 
