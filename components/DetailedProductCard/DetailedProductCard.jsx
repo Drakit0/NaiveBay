@@ -1,8 +1,7 @@
-import Image from "next/image";
 import styles from "./styles.module.css";
 import Link from "next/link";
 
-const DetailedProductCard = ({ product }) => {
+const DetailedProductCard = ({product}) => {
   return (
     <Link href={`/detail/${product.id}`} className={styles.link}>
       <div className={styles.productCard}>

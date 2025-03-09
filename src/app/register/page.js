@@ -8,7 +8,7 @@ import LoginFooter from "../../../components/LoginFooter/LoginFooter";
 import RegisterForm from "../../../components/RegisterForm/RegisterForm";
 import styles from "../../../components/RegisterForm/RegisterForm.module.css";
 import LoginPageTitle from "../../../components/LoginPageTitle/LoginPageTitle";
-import { useButtonTheme } from "../../../components/Contexts/ButtonThemeProvider";
+import {useButtonTheme} from "../../../components/Contexts/ButtonThemeProvider";
 import ImageBGContainer from "../../../components/ImageBGContainer/ImageBGContainer";
 import LoginPageTemplate from "../../../components/LoginPageTemplate/LoginPageTemplate";
 
