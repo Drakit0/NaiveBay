@@ -1,16 +1,15 @@
-"use client"; 
+"use client";
 
-import React, {useState, useEffect} from "react";
-import {useParams} from "next/navigation";
+import React, { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 
 import DetailedProductBid from "../../../../components/DetailedProductBid/DetailedProductBid";
-
 
 import styles from "./page.module.css";
 
 export default function Page() {
   const params = useParams();
-  const {id} = params; 
+  const { id } = params;
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -30,9 +29,9 @@ export default function Page() {
   }
 
   return (
-    <main className={styles.biddingPageContainer}>
+    <main className={styles.main}>
       <section className={styles.mainContent}>
-        <DetailedProductBid product ={product}/>
+        <DetailedProductBid product={product} />
       </section>
     </main>
   );

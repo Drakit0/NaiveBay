@@ -1,17 +1,19 @@
-"use client"; 
+"use client";
 
 import styles from "./styles.module.css";
 
-import {Button} from "@mui/material";
-import {ThemeProvider} from "@emotion/react";
-import {useButtonTheme} from "../../components/Contexts/ButtonThemeProvider";
+import { Button } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
+import { useButtonTheme } from "../../components/Contexts/ButtonThemeProvider";
 
 const DetailedProductCard = ({ product }) => {
   const buttonTheme = useButtonTheme();
 
   // Use product info when available
   const title = product?.title || "Khaki Field Murph Auto";
-  const description = product?.description || "The Khaki Field Murph Auto 38mm is here. One of the science fiction's most famous watches known by fans as 'The Murph' is now housed in a compact 38mm stainless steel case. Featuring ultra-readable black dial, beige vintage-style Super-LumiNova® finished hands and black leather strap, it reflects the key aesthetic codes of its 42mm predecessor. Powered by the H-10 automatic movement boasting an 80-hour power reserve, this Khaki Field Murph Auto will capture the hearts of those who are in love with smaller watches.";
+  const description =
+    product?.description ||
+    "The Khaki Field Murph Auto 38mm is here. One of the science fiction's most famous watches known by fans as 'The Murph' is now housed in a compact 38mm stainless steel case. Featuring ultra-readable black dial, beige vintage-style Super-LumiNova® finished hands and black leather strap, it reflects the key aesthetic codes of its 42mm predecessor. Powered by the H-10 automatic movement boasting an 80-hour power reserve, this Khaki Field Murph Auto will capture the hearts of those who are in love with smaller watches.";
   const currentPrice = product?.price ? `$${product.price}` : "750$";
 
   const images =
@@ -37,8 +39,7 @@ const DetailedProductCard = ({ product }) => {
             ))}
           </div> */}
 
-          <img src={images[0]} width={450} height={450} />
-
+          <img src={images[0]} />
         </div>
 
         <div className={styles["related-products__container"]}>
@@ -82,7 +83,9 @@ const DetailedProductCard = ({ product }) => {
             />
             <b>Mr. Peanuts</b>
           </div>
-          <h1 className={styles["item-name"]} id="item-name">{title}</h1>
+          <h1 className={styles["item-name"]} id="item-name">
+            {title}
+          </h1>
         </div>
 
         <hr className={styles.separator} />
@@ -103,8 +106,10 @@ const DetailedProductCard = ({ product }) => {
             </li>
           </ul>
 
-          <div className={styles["bidding-buttons__container"]}> {/* Change this to a react component */}
-              {/* <ThemeProvider theme={buttonTheme}>
+          <div className={styles["bidding-buttons__container"]}>
+            {" "}
+            {/* Change this to a react component */}
+            {/* <ThemeProvider theme={buttonTheme}>
                 <Button variant="contained" color="error">
                   Bid
                 </Button>
@@ -112,10 +117,13 @@ const DetailedProductCard = ({ product }) => {
                   Follow bid
                 </Button>
               </ThemeProvider> */}
-              <button className={`${styles.button} ${styles.button__red}`}>Bid</button> 
-              <button className={`${styles.button} ${styles.button__blue}`}>Follow bid</button>
+            <button className={`${styles.button} ${styles.button__red}`}>
+              Bid
+            </button>
+            <button className={`${styles.button} ${styles.button__blue}`}>
+              Follow bid
+            </button>
           </div>
-
         </div>
 
         <hr className={styles.separator} />
@@ -125,7 +133,7 @@ const DetailedProductCard = ({ product }) => {
             <p>
               <b>Origin:</b> Germany
             </p>
-            
+
             <p>
               <b>{shippingInformation}</b>
             </p>

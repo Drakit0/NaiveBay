@@ -17,6 +17,8 @@
   border-bottom: 0.2rem solid #1F7896;
   margin: 0.5rem 0;
   width: 100%;
+  background-color: white;
+  color: black;
   /* padding: 0.4rem; */
 }
 
@@ -73,11 +75,19 @@
 }
   
 .dateSelector {
-    margin: 1rem;
+  margin: 1rem;
+  background-color: white;
+  color: black;
+}
+
+.selectInput{
+  background-color: white;
+  color: black;
 }
   
 .error {
     color: red;
     font-weight: 500;
+    font-size: 0.8rem;
 }
   

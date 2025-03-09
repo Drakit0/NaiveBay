@@ -6,11 +6,11 @@ import styles from "./styles.module.css";
 const LoggedInBar = ({ username }) => {
   return (
     <>
-      <div className={styles.iconContainer}>
+      <div>
         <Typography variant="h5">{username}</Typography>
       </div>
 
-      <Link href="/user" className={styles.iconContainer}>
+      <Link href="/user">
         <Image
           src="/icons/user_icon.png"
           width={100}
