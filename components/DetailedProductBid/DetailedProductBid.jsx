@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import { Button } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import { useButtonTheme } from "../../components/Contexts/ButtonThemeProvider";
+import AuctionSettings from "../AuctionSettings/AuctionSettings";
 
 const DetailedProductCard = ({ product }) => {
   const buttonTheme = useButtonTheme();
@@ -86,6 +87,7 @@ const DetailedProductCard = ({ product }) => {
           <h1 className={styles["item-name"]} id="item-name">
             {title}
           </h1>
+          <AuctionSettings auctionId={product.id} />
         </div>
 
         <hr className={styles.separator} />
