@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 
-import DetailedProductBid from "../../../../components/DetailedProductBid/DetailedProductBid";
+import EditAuction from "../../../../components/EditAuction/EditAuction";
 
 import styles from "./page.module.css";
 
@@ -27,11 +27,12 @@ export default function Page() {
   // if (!product) {
   //   return <div className={styles.loading}>Loading product details...</div>;
   // }
+
   if (id === "new") {
     return (
       <main className={styles.main}>
       <section className={styles.mainContent}>
-        {/* <DetailedProductBid product={product} /> */}
+        {/* <EditAuction product={product} /> */}
         
       </section>
     </main>
@@ -40,7 +41,7 @@ export default function Page() {
   return (
     <main className={styles.main}>
       <section className={styles.mainContent}>
-        {/* <DetailedProductBid product={product} /> */}
+        <EditAuction product={product} />
         
       </section>
     </main>

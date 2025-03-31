@@ -1,9 +1,9 @@
 "use client";
 
-import styles from "./styles.module.css";
+import styles from "../DetailedProductBid/styles.module.css";
 
-import { Button } from "@mui/material";
-import { ThemeProvider } from "@emotion/react";
+// import { Button } from "@mui/material";
+// import { ThemeProvider } from "@emotion/react";
 import { useButtonTheme } from "../../components/Contexts/ButtonThemeProvider";
 import AuctionSettings from "../AuctionSettings/AuctionSettings";
 
