@@ -7,6 +7,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import TextField from "@mui/material/TextField";
+import Link from "next/link";
 
 const CategoryDrawer = () => {
   const [open, setOpen] = useState(false);
@@ -42,6 +43,9 @@ const CategoryDrawer = () => {
             <CloseIcon className={`${styles.bigOnHover} `} />
           </IconButton>
         </div>
+        <Link href="/auction/new">
+          <h3>Create new auction</h3>
+        </Link>
         <h3>Category 1</h3>
         <h3>Category 2</h3>
       </Drawer>
