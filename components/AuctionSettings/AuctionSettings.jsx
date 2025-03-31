@@ -22,15 +22,13 @@ const AuctionSettings = ({ auctionId }) => {
   };
   const handleMenuItemClick = (option) => {
     handleClose();
-    // Handle the selected option here
+
     if (option === "Edit" && auctionId) {
-      // Redirect to the edit page
       router.push(`/auction/${auctionId}`);
     } else if (option === "Delete" && auctionId) {
-      // Handle delete operation (show confirmation dialog, etc.)
       if (confirm("Are you sure you want to delete this auction?")) {
         console.log(`Deleting auction ${auctionId}`);
-        // Implement your delete logic here
+
         // After successful deletion, you might want to redirect
         // router.push('/my-auctions');
       }
