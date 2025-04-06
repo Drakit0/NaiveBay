@@ -13,7 +13,7 @@ const options = ["Edit", "Delete"];
 const AuctionSettings = ({ auctionId }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const { del } = UseNaiveBackAPI();
+  const { del, accessToken } = UseNaiveBackAPI();
   const router = useRouter();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

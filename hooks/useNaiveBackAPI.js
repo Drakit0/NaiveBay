@@ -12,7 +12,7 @@ const UseNaiveBackAPI = () => {
     }
   }, []);
   const get = useCallback(
-    async (subdomain, params, token = null) => {
+    async (subdomain, params) => {
       const url = new URL(`${API_URL}${subdomain}`);
 
       if (params) {
@@ -25,10 +25,8 @@ const UseNaiveBackAPI = () => {
         "Content-Type": "application/json",
       };
 
-      // Use provided token or fallback to stored token
-      const authToken = token || accessToken;
-      if (authToken) {
-        headers.Authorization = `Bearer ${authToken}`;
+      if (accessToken) {
+        headers.Authorization = `Bearer ${accessToken}`;
       }
 
       const response = await fetch(url, { headers });
@@ -48,9 +46,8 @@ const UseNaiveBackAPI = () => {
         "Content-Type": "application/json",
       };
 
-      const authToken = token || accessToken;
-      if (authToken) {
-        headers.Authorization = `Bearer ${authToken}`;
+      if (accessToken) {
+        headers.Authorization = `Bearer ${accessToken}`;
       }
 
       const response = await fetch(url, {
@@ -81,10 +78,8 @@ const UseNaiveBackAPI = () => {
         "Content-Type": "application/json",
       };
 
-      // Use provided token or fallback to stored token
-      const authToken = token || accessToken;
-      if (authToken) {
-        headers.Authorization = `Bearer ${authToken}`;
+      if (accessToken) {
+        headers.Authorization = `Bearer ${accessToken}`;
       }
 
       const response = await fetch(url, {
@@ -116,10 +111,8 @@ const UseNaiveBackAPI = () => {
         "Content-Type": "application/json",
       };
 
-      // Use provided token or fallback to stored token
-      const authToken = token || accessToken;
-      if (authToken) {
-        headers.Authorization = `Bearer ${authToken}`;
+      if (accessToken) {
+        headers.Authorization = `Bearer ${accessToken}`;
       }
 
       const response = await fetch(url, {
