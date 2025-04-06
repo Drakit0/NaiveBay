@@ -1,7 +1,7 @@
 "use client";
 
 import Results from "../../../components/Results/Results";
-import {useSearchParams} from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import useProducts from "../../../hooks/useProducts";
 import { Suspense } from "react";
 
@@ -15,9 +15,9 @@ const Auctions = () => {
 
 const AuctionContent = () => {
   const searchParams = useSearchParams();
-  const products = useProducts("search", searchParams);
+  console.log("searchParams", { searchParams });
 
-  return <Results initialProducts={products} />;
+  return <Results params={searchParams} />;
 };
 
 export default Auctions;
