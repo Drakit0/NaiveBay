@@ -40,7 +40,7 @@ const UseNaiveBackAPI = () => {
     [accessToken]
   );
   const post = useCallback(
-    async (subdomain, body, token = null) => {
+    async (subdomain, body) => {
       const url = new URL(`${API_URL}${subdomain}`);
       const headers = {
         "Content-Type": "application/json",
@@ -72,7 +72,7 @@ const UseNaiveBackAPI = () => {
     [accessToken]
   );
   const put = useCallback(
-    async (subdomain, body, token = null) => {
+    async (subdomain, body) => {
       const url = new URL(`${API_URL}${subdomain}`);
       const headers = {
         "Content-Type": "application/json",
@@ -104,7 +104,7 @@ const UseNaiveBackAPI = () => {
     [accessToken]
   );
   const del = useCallback(
-    async (subdomain, token = null) => {
+    async (subdomain) => {
       const url = new URL(`${API_URL}${subdomain}`);
 
       const headers = {
