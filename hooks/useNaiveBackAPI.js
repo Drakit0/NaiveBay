@@ -1,76 +1,146 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const API_URL = "http://127.0.0.1:8000/api";
 // const API_URL = "http://localhost:8000/api";
 
 const UseNaiveBackAPI = () => {
   const [accessToken, setAccessToken] = useState(null);
-  const get = useCallback(async (subdomain, params) => {
-    const url = new URL(`${API_URL}${subdomain}`);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedToken = localStorage.getItem("accessToken");
+      if (savedToken) setAccessToken(savedToken);
+    }
+  }, []);
+  const get = useCallback(
+    async (subdomain, params, token = null) => {
+      const url = new URL(`${API_URL}${subdomain}`);
 
-    if (params) {
-      Object.entries(params).forEach(([key, value]) => {
-        url.searchParams.append(key, value);
+      if (params) {
+        Object.entries(params).forEach(([key, value]) => {
+          url.searchParams.append(key, value);
+        });
+      }
+
+      const headers = {
+        "Content-Type": "application/json",
+      };
+
+      // Use provided token or fallback to stored token
+      const authToken = token || accessToken;
+      if (authToken) {
+        headers.Authorization = `Bearer ${authToken}`;
+      }
+
+      const response = await fetch(url, { headers });
+      // const response = await fetch(url);
+      if (!response.ok) {
+        return null;
+      }
+      const data = await response.json();
+      return data;
+    },
+    [accessToken]
+  );
+  const post = useCallback(
+    async (subdomain, body, token = null) => {
+      const url = new URL(`${API_URL}${subdomain}`);
+      const headers = {
+        "Content-Type": "application/json",
+      };
+
+      const authToken = token || accessToken;
+      if (authToken) {
+        headers.Authorization = `Bearer ${authToken}`;
+      }
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(body),
       });
-    }
+      // const response = await fetch(url, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(body),
+      // });
 
-    const response = await fetch(url);
-    if (!response.ok) {
-      return null;
-    }
-    const data = await response.json();
-    return data;
-  }, []);
-  const post = useCallback(async (subdomain, body) => {
-    const url = new URL(`${API_URL}${subdomain}`);
-
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
+      if (!response.ok) {
+        return null;
+      }
+      const data = await response.json();
+      return data;
+    },
+    [accessToken]
+  );
+  const put = useCallback(
+    async (subdomain, body, token = null) => {
+      const url = new URL(`${API_URL}${subdomain}`);
+      const headers = {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+      };
 
-    if (!response.ok) {
-      return null;
-    }
-    const data = await response.json();
-    return data;
-  }, []);
-  const put = useCallback(async (subdomain, body) => {
-    const url = new URL(`${API_URL}${subdomain}`);
+      // Use provided token or fallback to stored token
+      const authToken = token || accessToken;
+      if (authToken) {
+        headers.Authorization = `Bearer ${authToken}`;
+      }
 
-    const response = await fetch(url, {
-      method: "PUT",
-      headers: {
+      const response = await fetch(url, {
+        method: "PUT",
+        headers,
+        body: JSON.stringify(body),
+      });
+      // const response = await fetch(url, {
+      //   method: "PUT",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(body),
+      // });
+
+      if (!response.ok) {
+        return null;
+      }
+      const data = await response.json();
+      return data;
+    },
+    [accessToken]
+  );
+  const del = useCallback(
+    async (subdomain, token = null) => {
+      const url = new URL(`${API_URL}${subdomain}`);
+
+      const headers = {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+      };
 
-    if (!response.ok) {
-      return null;
-    }
-    const data = await response.json();
-    return data;
-  }, []);
-  const del = useCallback(async (subdomain) => {
-    const url = new URL(`${API_URL}${subdomain}`);
+      // Use provided token or fallback to stored token
+      const authToken = token || accessToken;
+      if (authToken) {
+        headers.Authorization = `Bearer ${authToken}`;
+      }
 
-    const response = await fetch(url, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+      const response = await fetch(url, {
+        method: "DELETE",
+        headers,
+      });
+      // const response = await fetch(url, {
+      //   method: "DELETE",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // });
 
-    if (!response.ok) {
-      return null;
-    }
-    const data = await response.json();
-    return data;
-  }, []);
+      if (!response.ok) {
+        return null;
+      }
+      const data = await response.json();
+      return data;
+    },
+    [accessToken]
+  );
 
   const login = useCallback(async (username, password) => {
     const url = new URL(`${API_URL}/users/login/`);
