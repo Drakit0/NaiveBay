@@ -18,7 +18,7 @@ const useFilterConfig = () => {
       type: "slider",
       text: "Price Range",
       min: 0,
-      max: 1000,
+      max: 10000,
     },
   };
 };

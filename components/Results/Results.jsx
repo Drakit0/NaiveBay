@@ -16,7 +16,7 @@ const Results = ({ params }) => {
         filterValues={filterValues}
         onFilterChange={handleFilterChange}
       />
-      <ResultsProductGrid products={products} />
+      <ResultsProductGrid initialData={products} />
     </div>
   );
 };

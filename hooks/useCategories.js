@@ -10,8 +10,11 @@ const useCategories = () => {
     const fetchCategories = async () => {
       try {
         const data = await get("/auctions/categories");
-        if (Array.isArray(data.results)) {
-          setCategories(data.results);
+        const categories = data?.results.map((category) => category.name) || [
+          "All",
+        ];
+        if (Array.isArray(categories)) {
+          setCategories(categories);
         } else {
           setCategories([]);
           console.log("Categories data is not an array:", data);

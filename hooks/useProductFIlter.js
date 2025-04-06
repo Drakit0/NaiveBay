@@ -6,7 +6,7 @@ const useProductFilter = (searchQuery) => {
   const search = searchQuery.search || "";
   const category = searchQuery.category || "All";
   const min_price = searchQuery.min_price || 0;
-  const max_price = searchQuery.max_price || 1000;
+  const max_price = searchQuery.max_price || 10000;
   const { get } = UseNaiveBackAPI();
   const [filterValues, setFilterValues] = useState({
     // ordering: "Relevance",
@@ -29,11 +29,10 @@ const useProductFilter = (searchQuery) => {
     if (filterValues.category && filterValues.category !== "All") {
       query.category = filterValues.category;
     }
-    console.log(filterValues.priceRange);
     query.min_price = filterValues.priceRange[0];
     query.max_price = filterValues.priceRange[1];
-    console.log(query);
     const getProducts = async () => {
+      console.log("making call to backend");
       const response = await get("/auctions", query);
       if (!response) {
         setProducts([]);
