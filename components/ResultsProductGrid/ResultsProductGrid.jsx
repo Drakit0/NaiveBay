@@ -3,7 +3,7 @@ import DetailedProductCard from "../DetailedProductCard/DetailedProductCard";
 import styles from "./styles.module.css";
 import { useState } from "react";
 
-//TODO: show number of results
+// TODO: change this so it works with backend
 const ResultsProductGrid = ({ products }) => {
   const productsPerPage = 5;
   const totalPages = Math.ceil(products.length / productsPerPage);

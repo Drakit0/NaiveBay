@@ -7,7 +7,6 @@ const LoginForm = ({ formStructure, submitHandler }) => {
   const handleSubmit = (event) => {
     submitHandler(event);
   };
-  // TODO: make so fields can be required
   return (
     <form className={styles.loginForm} onSubmit={handleSubmit}>
       {Object.entries(formStructure).map(([key, { type, value }], index) =>

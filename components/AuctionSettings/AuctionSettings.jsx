@@ -13,6 +13,7 @@ const options = ["Edit", "Delete"];
 const AuctionSettings = ({ auctionId }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const { del } = UseNaiveBackAPI();
   const router = useRouter();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -24,7 +25,9 @@ const AuctionSettings = ({ auctionId }) => {
     handleClose();
 
     if (option === "Edit" && auctionId) {
-      router.push(`/auction/${auctionId}`);
+      const url = new URL("/edit/auction");
+      url.searchParams.append("id", auctionId);
+      router.push(url);
     } else if (option === "Delete" && auctionId) {
       if (confirm("Are you sure you want to delete this auction?")) {
         console.log(`Deleting auction ${auctionId}`);
