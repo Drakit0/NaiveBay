@@ -8,10 +8,11 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import TextField from "@mui/material/TextField";
 import Link from "next/link";
+import UseNaiveBackAPI from "../../../../hooks/useNaiveBackAPI";
 
 const CategoryDrawer = () => {
   const [open, setOpen] = useState(false);
-
+  const { accessToken } = UseNaiveBackAPI();
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -43,9 +44,11 @@ const CategoryDrawer = () => {
             <CloseIcon className={`${styles.bigOnHover} `} />
           </IconButton>
         </div>
-        <Link href="/auction/new">
-          <h3>Create new auction</h3>
-        </Link>
+        {accessToken ? (
+          <Link href="/auction/new">
+            <h3>Create new auction</h3>
+          </Link>
+        ) : null}
         <h3>Category 1</h3>
         <h3>Category 2</h3>
       </Drawer>

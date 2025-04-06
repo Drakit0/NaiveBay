@@ -7,13 +7,14 @@ import MenuItem from "@mui/material/MenuItem";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import UseNaiveBackAPI from "../../hooks/useNaiveBackAPI";
 
 const options = ["Edit", "Delete"];
 
 const AuctionSettings = ({ auctionId }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const { del, accessToken } = UseNaiveBackAPI();
+  const { del } = UseNaiveBackAPI();
   const router = useRouter();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -21,19 +22,32 @@ const AuctionSettings = ({ auctionId }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleMenuItemClick = (option) => {
+  const handleMenuItemClick = async (option) => {
     handleClose();
 
     if (option === "Edit" && auctionId) {
-      const url = new URL("/edit/auction");
-      url.searchParams.append("id", auctionId);
-      router.push(url);
+      router.push(`/edit/auction?id=${auctionId}`);
     } else if (option === "Delete" && auctionId) {
       if (confirm("Are you sure you want to delete this auction?")) {
         console.log(`Deleting auction ${auctionId}`);
+        try {
+          // Await the async del function
+          const response = await del(`/auctions/${auctionId}`);
 
-        // After successful deletion, you might want to redirect
-        // router.push('/my-auctions');
+          if (response) {
+            console.log("Deletion successful:", response);
+
+            // Redirect after successful deletion
+            router.push("/");
+          } else {
+            // Handle deletion failure
+            console.error("Failed to delete auction");
+            alert("Failed to delete auction. Please try again.");
+          }
+        } catch (error) {
+          console.error("Error deleting auction:", error);
+          alert("An error occurred while deleting the auction");
+        }
       }
     }
   };
