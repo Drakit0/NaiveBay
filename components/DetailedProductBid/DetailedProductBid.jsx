@@ -2,8 +2,6 @@
 
 import styles from "./styles.module.css";
 
-import { Button } from "@mui/material";
-import { ThemeProvider } from "@emotion/react";
 import { useButtonTheme } from "../../components/Contexts/ButtonThemeProvider";
 import AuctionSettings from "../AuctionSettings/AuctionSettings";
 
@@ -18,14 +16,14 @@ const DetailedProductCard = ({ product }) => {
   const currentPrice = product?.price ? `$${product.price}` : "750$";
 
   const images =
-    product?.images && product.images.length > 0
-      ? product.images
+    product?.thumbnail && product.thumbnail.length > 0
+      ? [product.thumbnail]
       : [
           "../../public/images/bidding_example_watch/hamilton_1.png",
           "../../public/images/bidding_example_watch/hamilton_2.png",
           "../../public/images/bidding_example_watch/hamilton_3.png",
         ];
-
+  console.log(images);
   const brand = product?.brand || "Hamilton";
   const tags = product?.tags ? product.tags.slice(1, 2) : [];
   const shippingInformation = product?.shippingInformation || "Shipment";
@@ -87,7 +85,7 @@ const DetailedProductCard = ({ product }) => {
           <h1 className={styles["item-name"]} id="item-name">
             {title}
           </h1>
-          <AuctionSettings auctionId={product.id}/>
+          <AuctionSettings auctionId={product.id} />
         </div>
 
         <hr className={styles.separator} />

@@ -6,23 +6,24 @@ import { useParams } from "next/navigation";
 import DetailedProductBid from "../../../../components/DetailedProductBid/DetailedProductBid";
 
 import styles from "./page.module.css";
+import UseNaiveBackAPI from "../../../../hooks/useNaiveBackAPI";
 
 export default function Page() {
   const params = useParams();
   const { id } = params;
   const [product, setProduct] = useState(null);
+  const { get } = UseNaiveBackAPI();
 
   useEffect(() => {
     if (!id) return;
-    fetch(`https://dummyjson.com/products/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProduct(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching product:", error);
-      });
-  }, [id]);
+    const productData = async () => {
+      const response = await get(`/auctions/${id}`);
+      if (response) {
+        setProduct(response);
+      }
+    };
+    productData();
+  }, [id, get]);
 
   if (!product) {
     return <div className={styles.loading}>Loading product details...</div>;
