@@ -1,15 +1,17 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import styles from "./page.module.css";
 import UseNaiveBackAPI from "../../../../hooks/useNaiveBackAPI";
 import EditElement from "../../../../components/EditElement/EditElement";
 
+// In this case, auctionStructure is minimal.
 const auctionStructure = ["price"];
 
-export default function Page() {
+// All client hook logic is moved into this component.
+function PageContent() {
   const params = useSearchParams();
   const id = params.get("auction");
   const bidId = params.get("bid");
@@ -21,8 +23,10 @@ export default function Page() {
     const getElement = async () => {
       if (!id) {
         router.push("/");
+        return;
       }
       if (!bidId) {
+        // Prepare a new bid element with default auction structure
         setElement(
           Object.fromEntries(auctionStructure.map((field) => [field, ""]))
         );
@@ -32,12 +36,13 @@ export default function Page() {
         const response = await get(`/auctions/${id}/bids/${bidId}`);
 
         if (response) {
+          // Remove properties not meant to be edited
           delete response.creation_date;
           delete response.auction;
           delete response.bidder;
           setElement(response);
         }
-      } catch {
+      } catch (error) {
         console.error("Error fetching element:", error);
         router.push("/");
       }
@@ -45,19 +50,13 @@ export default function Page() {
     getElement();
   }, [id, bidId, get, router]);
 
-  // if (!element) {
-  //   return <div className={styles.loading}>Loading element details...</div>;
-  // }
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Create a proper FormData object
+      // Convert form data to object
       const formData = new FormData(e.target);
-
-      // Convert FormData to regular object
       const formObject = Object.fromEntries(formData);
 
-      // POST for new items, PATCH for existing ones
       let response;
       if (!bidId) {
         response = await post(`/auctions/${id}/bids/`, formObject);
@@ -67,7 +66,7 @@ export default function Page() {
 
       if (response) {
         alert("Data updated successfully!");
-        router.push("/"); // Redirect to home after success
+        router.push("/");
       } else {
         alert("Failed to update data");
       }
@@ -87,5 +86,14 @@ export default function Page() {
         )}
       </section>
     </main>
+  );
+}
+
+// Wrap PageContent with Suspense to satisfy Next.js requirements.
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading page...</div>}>
+      <PageContent />
+    </Suspense>
   );
 }

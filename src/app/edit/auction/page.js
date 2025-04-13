@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import styles from "./page.module.css";
@@ -8,6 +8,7 @@ import UseNaiveBackAPI from "../../../../hooks/useNaiveBackAPI";
 import EditElement from "../../../../components/EditElement/EditElement";
 import useCategories from "../../../../hooks/useCategories";
 
+// Define the auction structure fields
 const auctionStructure = [
   "title",
   "description",
@@ -20,7 +21,8 @@ const auctionStructure = [
   "closing_date",
 ];
 
-export default function Page() {
+// This component contains all logic that uses client-only hooks like useSearchParams.
+function PageContent() {
   const params = useSearchParams();
   const id = params.get("id");
   const { get, post, put } = UseNaiveBackAPI();
@@ -31,20 +33,23 @@ export default function Page() {
   useEffect(() => {
     const getElement = async () => {
       if (!id) {
+        // If no id, prepare an empty auction element
         setElement(
           Object.fromEntries(auctionStructure.map((field) => [field, ""]))
         );
+        return;
       }
       try {
         const response = await get(`/auctions/${id}`);
 
         if (response) {
+          // Remove properties that should not be edited
           delete response.auctioneer;
           delete response.creation_date;
           delete response.isOpen;
           setElement(response);
         }
-      } catch {
+      } catch (error) {
         console.error("Error fetching element:", error);
         router.push("/");
       }
@@ -52,24 +57,18 @@ export default function Page() {
     getElement();
   }, [id, get, router]);
 
-  // if (!element) {
-  //   return <div className={styles.loading}>Loading element details...</div>;
-  // }
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Create a proper FormData object
+      // Convert form data to an object
       const formData = new FormData(e.target);
-
-      // Convert FormData to regular object
       const formObject = Object.fromEntries(formData);
 
-      // Transform category name to category ID if it exists
+      // Transform category name to category ID if available
       if (formObject.category && categoryMap[formObject.category]) {
         formObject.category = categoryMap[formObject.category];
       }
 
-      // POST for new items, PATCH for existing ones
       let response;
       if (!id) {
         response = await post(`/auctions/`, formObject);
@@ -79,7 +78,7 @@ export default function Page() {
 
       if (response) {
         alert("Data updated successfully!");
-        router.push("/"); // Redirect to home after success
+        router.push("/");
       } else {
         alert("Failed to update data");
       }
@@ -99,5 +98,14 @@ export default function Page() {
         )}
       </section>
     </main>
+  );
+}
+
+// Wrap PageContent in a Suspense boundary for safe CSR usage.
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading page...</div>}>
+      <PageContent />
+    </Suspense>
   );
 }
