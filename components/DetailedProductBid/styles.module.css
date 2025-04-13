@@ -100,7 +100,9 @@
   
 .bidding-title {
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 20% 70% 10%;
+    align-items: center;
+    justify-items: center;
     margin: 1rem;
 }
 

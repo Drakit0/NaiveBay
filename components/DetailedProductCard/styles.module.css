@@ -24,3 +24,8 @@
     align-items: center;
     object-fit: cover;
 }
+
+.thumbnail{
+    height: 100%;
+    width: 100%
+}

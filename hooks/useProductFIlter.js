@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
+import UseNaiveBackAPI from "./useNaiveBackAPI";
 
-const useProductFilter = (initialProducts) => {
-  const [products, setProducts] = useState(initialProducts || []);
+const useProductFilter = (searchQuery) => {
+  const [products, setProducts] = useState([]);
+  const search = searchQuery.get("search") || "";
+  const category = searchQuery.get("category") || "All";
+  const min_price = searchQuery.get("min_price") || 0;
+  const max_price = searchQuery.get("max_price") || 10000;
+  const { get } = UseNaiveBackAPI();
   const [filterValues, setFilterValues] = useState({
-    ordering: "Relevance",
-    category: "All",
-    priceRange: [0, 1000],
+    // ordering: "Relevance",
+    category: category,
+    priceRange: [min_price, max_price],
   });
 
   const handleFilterChange = (filterName, value) => {
@@ -18,29 +24,24 @@ const useProductFilter = (initialProducts) => {
   };
 
   useEffect(() => {
-    console.log({ initialProducts });
-    let filteredProducts = [...initialProducts];
-
+    let query = {};
+    query.search = search;
     if (filterValues.category && filterValues.category !== "All") {
-      filteredProducts = filteredProducts.filter(
-        (product) => product.category === filterValues.category
-      );
+      query.category = filterValues.category;
     }
-    console.log(filterValues.priceRange);
-    filteredProducts = filteredProducts.filter(
-      (product) =>
-        product.price >= filterValues.priceRange[0] &&
-        product.price <= filterValues.priceRange[1]
-    );
+    query.min_price = filterValues.priceRange[0];
+    query.max_price = filterValues.priceRange[1];
+    const getProducts = async () => {
+      const response = await get("/auctions", query);
+      if (!response) {
+        setProducts([]);
+        return;
+      }
 
-    if (filterValues.ordering === "Ascending") {
-      filteredProducts.sort((a, b) => a.price - b.price);
-    } else if (filterValues.ordering === "Descending") {
-      filteredProducts.sort((a, b) => b.price - a.price);
-    }
-
-    setProducts(filteredProducts);
-  }, [filterValues, initialProducts]);
+      setProducts(response);
+    };
+    getProducts();
+  }, [filterValues, search, get]);
 
   return {
     products,

@@ -26,7 +26,6 @@ const MenuBar = () => {
           height={100}
         />
       </Link>
-      {/* TODO: onclick={sidebarToggle} */}
       <div className={styles.searchBarContainer}>
         <MainSearchBar />
       </div>

@@ -1,16 +1,32 @@
 import { useState, useEffect } from "react";
 import useDummyJSONAPI from "./useDummyJSONAPI";
+import UseNaiveBackAPI from "./useNaiveBackAPI";
 
 const useCategories = () => {
   const [categories, setCategories] = useState([]);
-  const { get } = useDummyJSONAPI();
+  const [categoryMap, SetCategoryMap] = useState({});
+  const [invCategoryMap, SetInvCategoryMap] = useState({});
+  const { get } = UseNaiveBackAPI();
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const data = await get("category-list");
-        if (Array.isArray(data)) {
-          setCategories(data);
+        const data = await get("/auctions/categories");
+        const categories = data?.results.map((category) => category.name) || [
+          "All",
+        ];
+        SetCategoryMap(
+          Object.fromEntries(
+            data.results.map((category) => [category.name, category.id])
+          )
+        );
+        SetInvCategoryMap(
+          Object.fromEntries(
+            data.results.map((category) => [category.id, category.name])
+          )
+        );
+        if (Array.isArray(categories)) {
+          setCategories(categories);
         } else {
           setCategories([]);
           console.log("Categories data is not an array:", data);
@@ -24,7 +40,7 @@ const useCategories = () => {
     fetchCategories();
   }, [get]);
 
-  return categories;
+  return { categories, categoryMap, invCategoryMap };
 };
 
 export default useCategories;

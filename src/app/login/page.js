@@ -35,7 +35,7 @@ const Login = () => {
     const formData = new FormData(event.target);
     const formObject = Object.fromEntries(formData);
     const cleanedForm = {
-      username: formObject.Username?.trim().toLowerCase() || "",
+      username: formObject.Username?.trim() || "",
       password: formObject.Password || "",
     };
     validateForm(cleanedForm);

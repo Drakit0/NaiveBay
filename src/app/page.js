@@ -6,7 +6,8 @@ import SuggestedProducts from "../../components/SuggestedProducts/SuggestedProdu
 import useProducts from "../../hooks/useProducts";
 
 export default function Home() {
-  const products = useProducts("");
+  const products = useProducts("/auctions");
+  console.log({ products });
   return (
     <>
       <main className={styles.main}>

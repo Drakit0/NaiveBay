@@ -2,12 +2,14 @@
 
 import styles from "./styles.module.css";
 
-import { Button } from "@mui/material";
-import { ThemeProvider } from "@emotion/react";
 import { useButtonTheme } from "../../components/Contexts/ButtonThemeProvider";
+import AuctionSettings from "../AuctionSettings/AuctionSettings";
+import BidsBar from "../BidsBar/BidsBar";
+import Link from "next/link";
 
 const DetailedProductCard = ({ product }) => {
   const buttonTheme = useButtonTheme();
+  const accessToken = localStorage.getItem("accessToken");
 
   // Use product info when available
   const title = product?.title || "Khaki Field Murph Auto";
@@ -17,14 +19,14 @@ const DetailedProductCard = ({ product }) => {
   const currentPrice = product?.price ? `$${product.price}` : "750$";
 
   const images =
-    product?.images && product.images.length > 0
-      ? product.images
+    product?.thumbnail && product.thumbnail.length > 0
+      ? [product.thumbnail]
       : [
           "../../public/images/bidding_example_watch/hamilton_1.png",
           "../../public/images/bidding_example_watch/hamilton_2.png",
           "../../public/images/bidding_example_watch/hamilton_3.png",
         ];
-
+  console.log(images);
   const brand = product?.brand || "Hamilton";
   const tags = product?.tags ? product.tags.slice(1, 2) : [];
   const shippingInformation = product?.shippingInformation || "Shipment";
@@ -86,6 +88,7 @@ const DetailedProductCard = ({ product }) => {
           <h1 className={styles["item-name"]} id="item-name">
             {title}
           </h1>
+          <AuctionSettings auctionId={product.id} />
         </div>
 
         <hr className={styles.separator} />
@@ -93,16 +96,7 @@ const DetailedProductCard = ({ product }) => {
         <div className={styles["bidding-description"]}>
           <ul>
             <li id="current-price">
-              <b>Current bid value:</b> {currentPrice}
-            </li>
-            <li>
-              <b>Current Amount of bids:</b> 12
-            </li>
-            <li>
-              <b>First bidding:</b> 2025/02/05 18:03
-            </li>
-            <li>
-              <b>Time until closing bidding:</b> 0h 15min 12sec
+              <b>Price:</b> {currentPrice}
             </li>
           </ul>
 
@@ -117,14 +111,17 @@ const DetailedProductCard = ({ product }) => {
                   Follow bid
                 </Button>
               </ThemeProvider> */}
-            <button className={`${styles.button} ${styles.button__red}`}>
-              Bid
-            </button>
+            <Link href={`/edit/bid?auction=${product.id}`}>
+              <button className={`${styles.button} ${styles.button__red}`}>
+                Bid
+              </button>
+            </Link>
             <button className={`${styles.button} ${styles.button__blue}`}>
               Follow bid
             </button>
           </div>
         </div>
+        {accessToken ? <BidsBar id={product.id} /> : null}
 
         <hr className={styles.separator} />
 

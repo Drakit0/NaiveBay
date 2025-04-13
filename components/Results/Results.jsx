@@ -4,9 +4,9 @@ import useFilterConfig from "./hooks";
 import ResultsProductGrid from "../ResultsProductGrid/ResultsProductGrid";
 import styles from "./styles.module.css";
 
-const Results = ({ initialProducts }) => {
+const Results = ({ params }) => {
   const { products, filterValues, handleFilterChange } =
-    useProductFilter(initialProducts);
+    useProductFilter(params);
   const filters = useFilterConfig();
 
   return (
@@ -16,7 +16,7 @@ const Results = ({ initialProducts }) => {
         filterValues={filterValues}
         onFilterChange={handleFilterChange}
       />
-      <ResultsProductGrid products={products} />
+      <ResultsProductGrid initialData={products} />
     </div>
   );
 };
