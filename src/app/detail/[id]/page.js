@@ -29,11 +29,5 @@ export default function Page() {
     return <div className={styles.loading}>Loading product details...</div>;
   }
 
-  return (
-    <main className={styles.main}>
-      <section className={styles.mainContent}>
-        <DetailedProductBid product={product} />
-      </section>
-    </main>
-  );
+  return <DetailedProductBid product={product} />;
 }

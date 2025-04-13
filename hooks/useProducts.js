@@ -1,29 +1,29 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import useDummyJSONAPI from "./useDummyJSONAPI";
+import UseNaiveBackAPI from "./useNaiveBackAPI";
 
 const useProducts = (endpoint, searchParams) => {
   const [products, setProducts] = useState([]);
-  const { get } = useDummyJSONAPI();
-
+  const { get } = UseNaiveBackAPI();
+  const nPages = 3;
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const params = searchParams
           ? Object.fromEntries(searchParams.entries())
           : {};
-        if (!params["limit"]) {
-          params["limit"] = 0;
-        }
-        console.log({ params, endpoint });
-        const data = await get(endpoint, params);
 
-        if (data && data.products) {
-          setProducts(data.products);
-          console.log(`Loaded ${data.products.length} products`);
-        } else {
-          setProducts([]);
+        console.log({ params, endpoint });
+        for (let i = 0; i < nPages; i++) {
+          params.page = i + 1;
+          const data = await get(endpoint, params);
+          console.log({ data });
+
+          if (data && data.results) {
+            setProducts((prevProducts) => [...prevProducts, ...data.results]);
+            console.log(`Loaded ${data.results.length} products`);
+          }
         }
       } catch (e) {
         console.error(`Error fetching products:`, e);
