@@ -6,7 +6,7 @@ import useCategories from "../../hooks/useCategories";
 
 const EditElement = ({ element, handleSubmit }) => {
   const [formData, setFormData] = useState({});
-  const { categories, invCategoryMap } = useCategories();
+  const { categories, categoryMap, invCategoryMap } = useCategories();
 
   // Update formData when element changes
   useEffect(() => {
@@ -18,10 +18,19 @@ const EditElement = ({ element, handleSubmit }) => {
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    if (name === "category" && value !== "") {
+      // Find the ID that corresponds to this category name
+      const categoryId = categoryMap[value];
+      setFormData((prev) => ({
+        ...prev,
+        [name]: categoryId, // Store the ID, not the name
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   // Handle form submission with updated data

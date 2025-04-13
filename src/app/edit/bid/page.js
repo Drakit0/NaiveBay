@@ -7,21 +7,13 @@ import styles from "./page.module.css";
 import UseNaiveBackAPI from "../../../../hooks/useNaiveBackAPI";
 import EditElement from "../../../../components/EditElement/EditElement";
 
-const auctionStructure = [
-  "title",
-  "description",
-  "price",
-  "rating",
-  "stock",
-  "brand",
-  "thumbnail",
-  "category",
-];
+const auctionStructure = ["price"];
 
 export default function Page() {
   const params = useSearchParams();
   const id = params.get("id");
-  const { get } = UseNaiveBackAPI();
+  const bidId = params.get("bidId");
+  const { get, post, put } = UseNaiveBackAPI();
   const [element, setElement] = useState(null);
   const router = useRouter();
 
@@ -33,12 +25,10 @@ export default function Page() {
         );
       }
       try {
-        const response = await get(`/auctions/${id}`);
+        const response = await get(`/auctions/${id}/bids/${bidId}`);
 
         if (response) {
-          delete response.auctioneer;
           delete response.creation_date;
-          delete response.isOpen;
           setElement(response);
         }
       } catch {
@@ -47,7 +37,7 @@ export default function Page() {
       }
     };
     getElement();
-  }, [id, get]);
+  }, [id, bidId, get, router]);
 
   // if (!element) {
   //   return <div className={styles.loading}>Loading element details...</div>;
@@ -55,12 +45,29 @@ export default function Page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const accessToken = localStorage.getItem("accessToken");
-      const updatedData = await updateUserProfile(accessToken, formData);
-      console.log("Updated data:", updatedData);
-      alert("Data updated successfully!");
+      // Create a proper FormData object
+      const formData = new FormData(e.target);
+
+      // Convert FormData to regular object
+      const formObject = Object.fromEntries(formData);
+
+      // POST for new items, PATCH for existing ones
+      let response;
+      if (!id) {
+        response = await post(`/auctions/${id}/bids/`, formObject);
+      } else {
+        response = await put(`/auctions/${id}/bids/${bidId}`, formObject);
+      }
+
+      if (response) {
+        alert("Data updated successfully!");
+        router.push("/"); // Redirect to home after success
+      } else {
+        alert("Failed to update data");
+      }
     } catch (error) {
       console.error("Unable to update the data:", error);
+      alert("Error updating data");
     }
   };
 
