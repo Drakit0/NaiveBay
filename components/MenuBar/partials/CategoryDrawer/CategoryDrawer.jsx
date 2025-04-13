@@ -12,7 +12,7 @@ import UseNaiveBackAPI from "../../../../hooks/useNaiveBackAPI";
 
 const CategoryDrawer = () => {
   const [open, setOpen] = useState(false);
-  const { accessToken } = UseNaiveBackAPI();
+  const accessToken = localStorage.getItem("accessToken");
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -45,7 +45,7 @@ const CategoryDrawer = () => {
           </IconButton>
         </div>
         {accessToken ? (
-          <Link href="/auction/new">
+          <Link href="/edit/auction">
             <h3>Create new auction</h3>
           </Link>
         ) : null}

@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 
-import EditAuction from "../../../../components/EditAuction/EditAuction";
+import EditAuction from "../../../../components/EditElement/EditElement";
 
 import styles from "./page.module.css";
 
 export default function Page() {
   const params = useParams();
-  const {id} = params;
+  const { id } = params;
   // const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -31,18 +31,16 @@ export default function Page() {
   if (id === "new") {
     return (
       <main className={styles.main}>
-      <section className={styles.mainContent}>
-        {/* <EditAuction product={product} /> */}
-        
-      </section>
-    </main>
+        <section className={styles.mainContent}>
+          {/* <EditAuction product={product} /> */}
+        </section>
+      </main>
     );
   }
   return (
     <main className={styles.main}>
       <section className={styles.mainContent}>
         <EditAuction product={product} />
-        
       </section>
     </main>
   );
