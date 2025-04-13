@@ -17,6 +17,7 @@ const auctionStructure = [
   "brand",
   "thumbnail",
   "category",
+  "closing_date",
 ];
 
 export default function Page() {

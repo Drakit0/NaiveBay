@@ -1,7 +1,20 @@
-const {useState} = require("react");
+import UseNaiveBackAPI from "../../../hooks/useNaiveBackAPI";
+
+const { useState } = require("react");
 
 export default function useRegisterValidation() {
   const [errorMessage, setErrorMessage] = useState("");
+  const { register } = UseNaiveBackAPI();
+  const registerUser = async (userData) => {
+    try {
+      const response = await register(userData);
+
+      return await response;
+    } catch (error) {
+      console.error(error);
+      return { error: "Registration failed due to a network error." };
+    }
+  };
 
   const validate = (formData) => {
     const errors = [];
@@ -16,15 +29,15 @@ export default function useRegisterValidation() {
 
     // Check password
     if (!password) {
-        errors.push("Please enter a password.");
+      errors.push("Please enter a password.");
     }
 
     if (!confirmPassword) {
-        errors.push("Please confirm your password.");
+      errors.push("Please confirm your password.");
     }
 
     if (password.length < 8) {
-        errors.push("Password must be at least 8 characters.");
+      errors.push("Password must be at least 8 characters.");
     }
 
     if (!/[A-Z]/.test(password)) {
@@ -39,20 +52,18 @@ export default function useRegisterValidation() {
       errors.push("Password must contain at least one number.");
     }
 
-    if (!/[!@#$%^&*_\-~#=]/.test(password)){
+    if (!/[!@#$%^&*_\-~#=]/.test(password)) {
       errors.push("Password must contain at least one special character.");
     }
 
     if (password !== confirmPassword) {
-        errors.push("Passwords do not match.");
+      errors.push("Passwords do not match.");
     }
 
     // Validate email
     if (!mail) {
       errors.push("Please enter an email address.");
-    } 
-    
-    else if (!mail.includes("@") || !mail.includes(".")) {
+    } else if (!mail.includes("@") || !mail.includes(".")) {
       errors.push("Please enter a valid email address.");
     }
 
@@ -60,7 +71,7 @@ export default function useRegisterValidation() {
     if (!autonomousCommunity) {
       errors.push("Please select an Autonomous community.");
     }
-    
+
     if (city === "") {
       errors.push("Please select a City.");
     }
@@ -68,9 +79,7 @@ export default function useRegisterValidation() {
     // Validate birthdate in the past
     if (!birthdate) {
       errors.push("Please select your birthdate.");
-    } 
-    
-    else {
+    } else {
       const selectedDate = new Date(birthdate);
       const today = new Date();
 
@@ -82,14 +91,12 @@ export default function useRegisterValidation() {
     if (errors.length > 0) {
       setErrorMessage(errors.join("\n"));
       return false;
-    } 
-    
-    else {
+    } else {
       setErrorMessage("");
       console.log("Registration data valid!");
       return true;
     }
   };
 
-  return [errorMessage, validate];
+  return [errorMessage, validate, registerUser];
 }

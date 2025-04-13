@@ -12,7 +12,10 @@ const useProfileData = () => {
     return response;
   };
   const updateUserProfile = async (formData) => {
-    const response = await patch(`/users/profile`, formData);
+    // If formData is a FormData instance, convert it to a plain object
+
+    console.log({ formData });
+    const response = await patch(`/users/profile/`, formData);
     // const response = await fetch(
     //   "https://das-p2-backend.onrender.com/api/users/profile/",
     //   {

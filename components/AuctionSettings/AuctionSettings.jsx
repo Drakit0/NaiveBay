@@ -32,18 +32,12 @@ const AuctionSettings = ({ auctionId }) => {
         console.log(`Deleting auction ${auctionId}`);
         try {
           // Await the async del function
-          const response = await del(`/auctions/${auctionId}`);
+          await del(`/auctions/${auctionId}/`);
 
-          if (response) {
-            console.log("Deletion successful:", response);
+          console.log("Deletion successful");
 
-            // Redirect after successful deletion
-            router.push("/");
-          } else {
-            // Handle deletion failure
-            console.error("Failed to delete auction");
-            alert("Failed to delete auction. Please try again.");
-          }
+          // Redirect after successful deletion
+          router.push("/");
         } catch (error) {
           console.error("Error deleting auction:", error);
           alert("An error occurred while deleting the auction");

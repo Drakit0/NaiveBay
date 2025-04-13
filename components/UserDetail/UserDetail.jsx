@@ -46,9 +46,8 @@ const UserDetail = () => {
     e.preventDefault();
     try {
       const accessToken = localStorage.getItem("accessToken");
-      const updatedData = await updateUserProfile(accessToken, formData);
+      const updatedData = await updateUserProfile(formData);
       console.log("Updated data:", updatedData);
-      alert("Data updated successfully!");
     } catch (error) {
       console.error("Unable to update the data:", error);
     }
