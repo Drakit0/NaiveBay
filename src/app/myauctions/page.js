@@ -4,8 +4,10 @@ import { useState, useEffect, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import DetailedProductCard from "../../../components/DetailedProductCard/DetailedProductCard";
 import UseNaiveBackAPI from "../../../hooks/useNaiveBackAPI";
-import styles from "./myauctions.module.css"; // You'll need to create this CSS file
+import styles from "./page.module.css"; // You'll need to create this CSS file
 import Link from "next/link";
+import { TemplateContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import MainPageTemplate from "../../../components/MainPageTemplate/MainPageTemplate";
 
 const MyAuctions = () => {
   return (
@@ -27,10 +29,10 @@ const MyAuctionsContent = () => {
       try {
         setIsLoading(true);
 
-        const auctionsResponse = await get(`/myAuctions`);
-
-        if (auctionsResponse?.results) {
-          setUserAuctions(auctionsResponse.results);
+        const auctionsResponse = await get(`/users/myAuctions/`);
+        console.log(auctionsResponse);
+        if (auctionsResponse) {
+          setUserAuctions(auctionsResponse);
         }
       } catch (error) {
         console.error("Error fetching user auctions:", error);
@@ -52,38 +54,40 @@ const MyAuctionsContent = () => {
       setUsername(storedUsername);
       fetchUserAuctions();
     }
-  }, [router]);
+  }, [get, router]);
 
   return (
-    <main className={styles.main}>
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <h1>My Auctions</h1>
-          <Link href="/edit/auction" className={styles.createButton}>
-            Create New Auction
-          </Link>
-        </div>
+    <MainPageTemplate>
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <div className={styles.header}>
+            <h1>My Auctions</h1>
+            <Link href="/edit/auction" className={styles.createButton}>
+              Create New Auction
+            </Link>
+          </div>
 
-        {isLoading ? (
-          <div className={styles.loading}>Loading your auctions...</div>
-        ) : userAuctions.length > 0 ? (
-          <div className={styles.auctionsGrid}>
-            {userAuctions.map((auction) => (
-              <DetailedProductCard
-                key={auction.id}
-                product={auction}
-                showEditButton={true}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className={styles.emptyState}>
-            <p>You have not created any auctions yet.</p>
-            <p>Click the Create New Auction button to get started!</p>
-          </div>
-        )}
-      </div>
-    </main>
+          {isLoading ? (
+            <div className={styles.loading}>Loading your auctions...</div>
+          ) : userAuctions.length > 0 ? (
+            <div className={styles.auctionsGrid}>
+              {userAuctions.map((auction) => (
+                <DetailedProductCard
+                  key={auction.id}
+                  product={auction}
+                  showEditButton={true}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className={styles.emptyState}>
+              <p>You have not created any auctions yet.</p>
+              <p>Click the Create New Auction button to get started!</p>
+            </div>
+          )}
+        </div>
+      </main>
+    </MainPageTemplate>
   );
 };
 
