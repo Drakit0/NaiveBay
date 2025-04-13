@@ -4,9 +4,12 @@ import styles from "./styles.module.css";
 
 import { useButtonTheme } from "../../components/Contexts/ButtonThemeProvider";
 import AuctionSettings from "../AuctionSettings/AuctionSettings";
+import BidsBar from "../BidsBar/BidsBar";
+import Link from "next/link";
 
 const DetailedProductCard = ({ product }) => {
   const buttonTheme = useButtonTheme();
+  const accessToken = localStorage.getItem("accessToken");
 
   // Use product info when available
   const title = product?.title || "Khaki Field Murph Auto";
@@ -117,14 +120,17 @@ const DetailedProductCard = ({ product }) => {
                   Follow bid
                 </Button>
               </ThemeProvider> */}
-            <button className={`${styles.button} ${styles.button__red}`}>
-              Bid
-            </button>
+            <Link href={`/edit/bid?auction=${product.id}`}>
+              <button className={`${styles.button} ${styles.button__red}`}>
+                Bid
+              </button>
+            </Link>
             <button className={`${styles.button} ${styles.button__blue}`}>
               Follow bid
             </button>
           </div>
         </div>
+        {accessToken ? <BidsBar id={product.id} /> : null}
 
         <hr className={styles.separator} />
 

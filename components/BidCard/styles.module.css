@@ -1,0 +1,48 @@
+
+  
+  .bidCard {
+    padding: 12px;
+    border-left: 4px solid #1F7896;
+    transition: transform 0.2s ease;
+  }
+  
+  .bidCard:hover {
+    transform: translateX(4px);
+  }
+
+  .bidderAvatar {
+    background-color: #1F7896 !important;
+    color: white !important;
+  }
+  
+  .bidderInfo {
+    flex-grow: 1;
+  }
+  
+  .bidderInfo h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  .bidHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .bidDate {
+    color: #666;
+    font-size: 0.8rem;
+  }
+  
+  .bidAmount {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1F4452;
+  }
+  
+  .bidIcon {
+    color: #1F7896;
+  }

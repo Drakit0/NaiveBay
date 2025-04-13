@@ -1,7 +1,7 @@
 .container {
     width: 100%;
     background-image: url('/images/treasure.jpg');
-    /* min-height: 100vh; */
+    min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
