@@ -96,16 +96,7 @@ const DetailedProductCard = ({ product }) => {
         <div className={styles["bidding-description"]}>
           <ul>
             <li id="current-price">
-              <b>Current bid value:</b> {currentPrice}
-            </li>
-            <li>
-              <b>Current Amount of bids:</b> 12
-            </li>
-            <li>
-              <b>First bidding:</b> 2025/02/05 18:03
-            </li>
-            <li>
-              <b>Time until closing bidding:</b> 0h 15min 12sec
+              <b>Price:</b> {currentPrice}
             </li>
           </ul>
 
