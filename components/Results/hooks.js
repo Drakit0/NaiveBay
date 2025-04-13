@@ -1,7 +1,7 @@
 import useCategories from "../../hooks/useCategories";
 
 const useFilterConfig = () => {
-  const categories = useCategories();
+  const { categories } = useCategories();
   console.log("Categories in useFilterConfig:", categories);
   return {
     // ordering: {

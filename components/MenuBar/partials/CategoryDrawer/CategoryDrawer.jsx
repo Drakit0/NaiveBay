@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import DensityMediumIcon from "@mui/icons-material/DensityMedium";
@@ -12,7 +12,13 @@ import UseNaiveBackAPI from "../../../../hooks/useNaiveBackAPI";
 
 const CategoryDrawer = () => {
   const [open, setOpen] = useState(false);
-  const accessToken = localStorage.getItem("accessToken");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Move localStorage access into useEffect (client-side only)
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    setIsAuthenticated(!!accessToken);
+  }, []);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -44,7 +50,7 @@ const CategoryDrawer = () => {
             <CloseIcon className={`${styles.bigOnHover} `} />
           </IconButton>
         </div>
-        {accessToken ? (
+        {isAuthenticated ? (
           <Link href="/edit/auction">
             <h3>Create new auction</h3>
           </Link>
