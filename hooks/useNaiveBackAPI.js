@@ -177,7 +177,7 @@ const UseNaiveBackAPI = () => {
         console.log("No access token available");
       }
 
-      const response = await fetch(url, {
+      await fetch(url, {
         method: "DELETE",
         headers,
       });
@@ -187,12 +187,19 @@ const UseNaiveBackAPI = () => {
       //     "Content-Type": "application/json",
       //   },
       // });
+      const response = await fetch(url, {
+        method: "DELETE",
+        headers,
+      });
 
+      // Check if response is OK but don't try to parse JSON
       if (!response.ok) {
+        console.error("DELETE failed:", response.status, response.statusText);
         return null;
       }
-      const data = await response.json();
-      return data;
+
+      // Return true for success instead of trying to parse response body
+      return true;
     },
     [handleTokenExpiration, isTokenExpired]
   );
@@ -271,6 +278,29 @@ const UseNaiveBackAPI = () => {
       router.push("/");
     }
   }, [post, router]);
+  const register = useCallback(async (formInfo) => {
+    const url = new URL(`${API_URL}/users/register/`);
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formInfo),
+      });
+
+      if (!response.ok) {
+        return null;
+      }
+      const data = await response.json();
+
+      return data;
+    } catch (error) {
+      console.error("Error during login:", error);
+      return null;
+    }
+  }, []);
   const refreshToken = useCallback(async () => {
     try {
       const refreshTokenValue = localStorage.getItem("refreshToken");
@@ -303,7 +333,7 @@ const UseNaiveBackAPI = () => {
     }
   }, [handleTokenExpiration]);
 
-  return { get, post, put, del, patch, login, logout, refreshToken };
+  return { get, post, put, del, patch, login, logout, register, refreshToken };
 };
 
 export default UseNaiveBackAPI;
