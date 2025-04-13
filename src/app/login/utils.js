@@ -1,16 +1,10 @@
+import UseNaiveBackAPI from "../../../hooks/useNaiveBackAPI";
+
 const validate = async (formInfo) => {
   try {
-    const response = await fetch(
-      "https://das-p2-backend.onrender.com/api/users/login/",
-      {
-        method: "POST",
-        body: JSON.stringify(formInfo),
-        headers: {
-          "Content-Type": "application/json",
-          //   Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    );
+    const { post } = UseNaiveBackAPI();
+    const subdomain = `/users/login/`;
+    const response = await post(subdomain, formInfo);
 
     if (!response.ok) {
       return null;
