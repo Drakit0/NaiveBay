@@ -177,10 +177,6 @@ const UseNaiveBackAPI = () => {
         console.log("No access token available");
       }
 
-      await fetch(url, {
-        method: "DELETE",
-        headers,
-      });
       // const response = await fetch(url, {
       //   method: "DELETE",
       //   headers: {
