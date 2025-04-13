@@ -24,21 +24,18 @@ const UseNaiveBackAPI = () => {
   }, [router]);
   const isTokenExpired = useCallback(async (token) => {
     if (!token) return true;
-    // const response = await fetch(`${API_URL}/auctions`, {
-    //   method: "GET",
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // });
-    // if (response.status === 401) {
-    //   console.log("Token expired");
-    //   return true; // Token is expired
-    // } else {
-    //   return false; // Token is valid
-    // }
-    else {
-      return false;
-    } // Token is valid
+    const response = await fetch(`${API_URL}/auctions`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.status === 401) {
+      console.log("Token expired");
+      return true; // Token is expired
+    } else {
+      return false; // Token is valid
+    }
   }, []);
 
   const get = useCallback(
