@@ -263,11 +263,11 @@
     /* padding-left: 0.5rem; */
 }
 .starIcon {
-    color: #FFD700; /* Gold color for stars */
+    color: #ffc400; /* Gold color for stars */
     font-size: 1.5rem; /* Adjust size as needed */
+    margin-left: 0.5rem;
 }
 .ratingNumber {
     font-size: 1.2rem; /* Adjust size as needed */
-    margin-left: 0.5rem;
 }
   
