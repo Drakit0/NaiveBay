@@ -6,12 +6,17 @@ const useProductFilter = (searchQuery) => {
   const search = searchQuery.get("search") || "";
   const category = searchQuery.get("category") || "All";
   const min_price = searchQuery.get("min_price") || 0;
-  const max_price = searchQuery.get("max_price") || 10000;
+  const max_price = searchQuery.get("max_price") || 2000;
+  const min_rating = searchQuery.get("min_rating") || 1;
+  const max_rating = searchQuery.get("max_rating") || 5;
+  const state = searchQuery.get("state") || "";
   const { get } = UseNaiveBackAPI();
   const [filterValues, setFilterValues] = useState({
     // ordering: "Relevance",
     category: category,
     priceRange: [min_price, max_price],
+    ratingRange: [min_rating, max_rating],
+    state: state,
   });
 
   const handleFilterChange = (filterName, value) => {
@@ -31,6 +36,11 @@ const useProductFilter = (searchQuery) => {
     }
     query.min_price = filterValues.priceRange[0];
     query.max_price = filterValues.priceRange[1];
+    query.min_rating = filterValues.ratingRange[0];
+    query.max_rating = filterValues.ratingRange[1];
+    if (filterValues.state !== "") {
+      query.state = filterValues.state;
+    }
     const getProducts = async () => {
       const response = await get("/auctions", query);
       if (!response) {

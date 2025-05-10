@@ -18,7 +18,18 @@ const useFilterConfig = () => {
       type: "slider",
       text: "Price Range",
       min: 0,
-      max: 10000,
+      max: 2000,
+    },
+    ratingRange: {
+      type: "slider",
+      text: "Rating range",
+      min: 1,
+      max: 5,
+    },
+    state: {
+      type: "option",
+      text: "Select state",
+      options: ["open", "closed"],
     },
   };
 };
