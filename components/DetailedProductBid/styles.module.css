@@ -255,4 +255,19 @@
     gap: 0.5rem;
     padding: 1rem;
 }
+
+.biddingRating {
+    display: flex;
+    align-items: center;
+    /* gap: 0.1rem; */
+    /* padding-left: 0.5rem; */
+}
+.starIcon {
+    color: #FFD700; /* Gold color for stars */
+    font-size: 1.5rem; /* Adjust size as needed */
+}
+.ratingNumber {
+    font-size: 1.2rem; /* Adjust size as needed */
+    margin-left: 0.5rem;
+}
   

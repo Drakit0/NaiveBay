@@ -7,10 +7,14 @@ import AuctionSettings from "../AuctionSettings/AuctionSettings";
 import Rating from "@mui/material/Rating";
 import BidsBar from "../BidsBar/BidsBar";
 import Link from "next/link";
+import formatDate from "./utils";
+import StarIcon from "@mui/icons-material/Star";
+import { Button } from "@mui/material";
 
 const DetailedProductCard = ({ product }) => {
   const buttonTheme = useButtonTheme();
   const accessToken = localStorage.getItem("accessToken");
+  console.log("product", product);
 
   // Use product info when available
   const title = product?.title || "Khaki Field Murph Auto";
@@ -96,12 +100,24 @@ const DetailedProductCard = ({ product }) => {
         <div className={styles.ratingContainer}>
           <p>Rate this auction</p>
           <Rating onChange={(e, value) => console.log(value)} />
+          <Button onClick={() => {}}>Remove</Button>
         </div>
 
         <div className={styles["bidding-description"]}>
           <ul>
             <li id="current-price">
               <b>Price:</b> {currentPrice}
+            </li>
+            <li id="bidding-time">
+              <b>Closing date:</b>{" "}
+              {product?.closing_date ? formatDate(product.closing_date) : ""}
+            </li>
+            <li className={styles.biddingRating}>
+              <b>Rating:</b>
+              <p className={styles.ratingNumber}>
+                {product?.avg_rating || "-"}
+              </p>
+              <StarIcon className={styles.starIcon} />
             </li>
           </ul>
 
