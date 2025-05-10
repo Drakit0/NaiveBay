@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 
 import { useButtonTheme } from "../../components/Contexts/ButtonThemeProvider";
 import AuctionSettings from "../AuctionSettings/AuctionSettings";
+import Rating from "@mui/material/Rating";
 import BidsBar from "../BidsBar/BidsBar";
 import Link from "next/link";
 
@@ -92,6 +93,10 @@ const DetailedProductCard = ({ product }) => {
         </div>
 
         <hr className={styles.separator} />
+        <div className={styles.ratingContainer}>
+          <p>Rate this auction</p>
+          <Rating />
+        </div>
 
         <div className={styles["bidding-description"]}>
           <ul>
