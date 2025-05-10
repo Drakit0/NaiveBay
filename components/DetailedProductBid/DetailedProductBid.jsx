@@ -5,12 +5,13 @@ import styles from "./styles.module.css";
 import { useButtonTheme } from "../../components/Contexts/ButtonThemeProvider";
 import AuctionSettings from "../AuctionSettings/AuctionSettings";
 import BidsBar from "../BidsBar/BidsBar";
+import CommentsBar from "../CommentsBar/CommentsBar";
 import Link from "next/link";
 
 const DetailedProductCard = ({ product }) => {
   const buttonTheme = useButtonTheme();
   const accessToken = localStorage.getItem("accessToken");
-
+  
   // Use product info when available
   const title = product?.title || "Khaki Field Murph Auto";
   const description =
@@ -121,7 +122,15 @@ const DetailedProductCard = ({ product }) => {
             </button>
           </div>
         </div>
-        {accessToken ? <BidsBar id={product.id} /> : null}
+        {accessToken ? (
+          <BidsBar id={product.id} />
+        ) : (
+          <p className={styles["warning-message"]}>
+            Only registered users can see bids. Please log in to access this feature.
+          </p>
+        )}
+
+        <CommentsBar id={product.id} />
 
         <hr className={styles.separator} />
 
