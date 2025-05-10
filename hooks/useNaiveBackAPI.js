@@ -115,6 +115,36 @@ const UseNaiveBackAPI = () => {
     },
     [handleTokenExpiration, isTokenExpired]
   );
+  const postWithImage = useCallback(
+    async (subdomain, body) => {
+      const url = new URL(`${API_URL}${subdomain}`);
+      const accessToken = loadAccessToken();
+      const headers = {};
+      if (accessToken) {
+        const expired = await isTokenExpired(accessToken);
+        if (expired) {
+          console.log("Token expired, refreshing...");
+          handleTokenExpiration();
+          return null;
+        }
+        headers.Authorization = `Bearer ${accessToken}`;
+      } else {
+        console.log("No access token available");
+      }
+      const response = await fetch(url, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(body),
+      });
+      if (!response.ok) {
+        return null;
+      }
+      const data = await response.json();
+      return data;
+    },
+    [handleTokenExpiration, isTokenExpired]
+  );
+
   const put = useCallback(
     async (subdomain, body) => {
       const url = new URL(`${API_URL}${subdomain}`);
@@ -329,7 +359,18 @@ const UseNaiveBackAPI = () => {
     }
   }, [handleTokenExpiration]);
 
-  return { get, post, put, del, patch, login, logout, register, refreshToken };
+  return {
+    get,
+    post,
+    postWithImage,
+    put,
+    del,
+    patch,
+    login,
+    logout,
+    register,
+    refreshToken,
+  };
 };
 
 export default UseNaiveBackAPI;

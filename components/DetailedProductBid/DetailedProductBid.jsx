@@ -95,7 +95,7 @@ const DetailedProductCard = ({ product }) => {
         <hr className={styles.separator} />
         <div className={styles.ratingContainer}>
           <p>Rate this auction</p>
-          <Rating />
+          <Rating onChange={(e, value) => console.log(value)} />
         </div>
 
         <div className={styles["bidding-description"]}>

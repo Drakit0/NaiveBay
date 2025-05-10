@@ -86,6 +86,20 @@ const EditElement = ({ element, handleSubmit }) => {
                   </div>
                 );
               }
+              case "image": {
+                return (
+                  <div key={key} className={styles.row}>
+                    <label>Image:</label>
+                    <input
+                      type={"file"}
+                      name={key}
+                      accept="image/*"
+                      value={value || ""}
+                      onChange={handleChange}
+                    />
+                  </div>
+                );
+              }
               default: {
                 return (
                   <div key={key} className={styles.row}>

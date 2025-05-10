@@ -17,6 +17,7 @@ const auctionStructure = [
   "stock",
   "brand",
   "thumbnail",
+  "image",
   "category",
   "closing_date",
 ];
@@ -63,6 +64,11 @@ function PageContent() {
       // Convert form data to an object
       const formData = new FormData(e.target);
       const formObject = Object.fromEntries(formData);
+      console.log("Form data:", formObject);
+      if (formObject.image && !formObject.thumbnail) {
+        formObject.thumbnail =
+          "https://www.shutterstock.com/search/default-image-icon";
+      }
 
       // Transform category name to category ID if available
       if (formObject.category && categoryMap[formObject.category]) {
