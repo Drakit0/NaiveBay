@@ -247,4 +247,27 @@
 .text__red {
     color: red;
 }
+
+.ratingContainer {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.biddingRating {
+    display: flex;
+    align-items: center;
+    /* gap: 0.1rem; */
+    /* padding-left: 0.5rem; */
+}
+.starIcon {
+    color: #ffc400; /* Gold color for stars */
+    font-size: 1.5rem; /* Adjust size as needed */
+    margin-left: 0.5rem;
+}
+.ratingNumber {
+    font-size: 1.2rem; /* Adjust size as needed */
+}
   

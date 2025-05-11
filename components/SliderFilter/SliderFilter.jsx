@@ -16,7 +16,8 @@ const SliderFilter = ({ filterName, filterTitle, min, max, handleChange }) => {
     <Filter filterName={filterName} filterTitle={filterTitle}>
       <Slider
         value={value}
-        onChange={handleSliderChange}
+        onChange={(event, newValue) => setValue(newValue)}
+        onChangeCommitted={handleSliderChange}
         valueLabelDisplay="auto"
         min={min}
         max={max}

@@ -4,14 +4,38 @@ import styles from "./styles.module.css";
 
 import { useButtonTheme } from "../../components/Contexts/ButtonThemeProvider";
 import AuctionSettings from "../AuctionSettings/AuctionSettings";
+import Rating from "@mui/material/Rating";
 import BidsBar from "../BidsBar/BidsBar";
 import CommentsBar from "../CommentsBar/CommentsBar";
 import Link from "next/link";
+import formatDate from "./utils";
+import StarIcon from "@mui/icons-material/Star";
+import { Button } from "@mui/material";
+import useRatings from "./hooks";
+import { use, useEffect } from "react";
 
 const DetailedProductCard = ({ product }) => {
   const buttonTheme = useButtonTheme();
   const accessToken = localStorage.getItem("accessToken");
-  
+  console.log("product", product);
+  const { rating, getRating, postRating, putRating, delRating } = useRatings(
+    product.id
+  );
+  const handleDeleteRating = async () => {
+    if (rating) {
+      await delRating();
+    } else {
+      alert("You haven't rated this auction yet");
+    }
+  };
+  const handleRatingChange = async (event, newValue) => {
+    event.preventDefault();
+    await putRating(newValue);
+  };
+  useEffect(() => {
+    getRating();
+  }, [getRating]);
+
   // Use product info when available
   const title = product?.title || "Khaki Field Murph Auto";
   const description =
@@ -93,11 +117,31 @@ const DetailedProductCard = ({ product }) => {
         </div>
 
         <hr className={styles.separator} />
+        <div className={styles.ratingContainer}>
+          <p>Rate this auction</p>
+          <Rating
+            onChange={handleRatingChange}
+            defaultValue={rating}
+            value={rating || null}
+          />
+          <Button onClick={handleDeleteRating}>Remove</Button>
+        </div>
 
         <div className={styles["bidding-description"]}>
           <ul>
             <li id="current-price">
               <b>Price:</b> {currentPrice}
+            </li>
+            <li id="bidding-time">
+              <b>Closing date:</b>{" "}
+              {product?.closing_date ? formatDate(product.closing_date) : ""}
+            </li>
+            <li className={styles.biddingRating}>
+              <b>Rating:</b>
+              <StarIcon className={styles.starIcon} />
+              <p className={styles.ratingNumber}>
+                {product?.avg_rating || "-"}
+              </p>
             </li>
           </ul>
 

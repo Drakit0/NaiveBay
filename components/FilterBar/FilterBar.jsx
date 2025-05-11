@@ -40,7 +40,7 @@ const FilterBar = ({ filters, filterValues, onFilterChange }) => {
                 filterName={key}
                 filterTitle={filter.text}
                 min={filter.min || 0}
-                max={filter.max || 10000}
+                max={filter.max || 2000}
                 handleChange={(e) => onFilterChange(key, e)}
               />
             );
