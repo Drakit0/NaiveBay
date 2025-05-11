@@ -161,9 +161,11 @@ const DetailedProductCard = ({ product }) => {
                 Bid
               </button>
             </Link>
+            <Link href={`/edit/comment?auction=${product.id}`}>
             <button className={`${styles.button} ${styles.button__blue}`}>
-              Follow bid
+              Comment
             </button>
+            </Link>
           </div>
         </div>
         {accessToken ? (
