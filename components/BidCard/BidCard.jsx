@@ -64,7 +64,7 @@ const BidCard = ({ bid, auctionID }) => {
   };
 
   const bidLink =
-    user?.username === currentUser
+    user?.username === currentUser || user?.is_staff
       ? `/edit/bid?auction=${auctionID}&bid=${bid.id}`
       : "#";
 
@@ -86,7 +86,7 @@ const BidCard = ({ bid, auctionID }) => {
             </span>
           </div>
           <div className={styles.bidAmount}>
-            {user?.username === currentUser ? (
+            {user?.username === currentUser || user?.is_staff ? (
               <DeleteIcon className={styles.bidIcon} onClick={deleteBid} />
             ) : null}
             <GavelIcon className={styles.bidIcon} />
