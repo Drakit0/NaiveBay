@@ -31,6 +31,9 @@
 .commentDate {
   color: #666;
   font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 13rem;
 }
 
 .commentActions {

@@ -21,6 +21,7 @@ const CommentCard = ({ comment, auctionID }) => {
     const fetchAuthor = async () => {
       try {
         const res = await get(`/users/${comment.user}`);
+        console.log("Individual user", res);
         if (res) setAuthor(res);
       } catch (err) {
         console.error("Error fetching comment author:", err);
@@ -57,7 +58,7 @@ const CommentCard = ({ comment, auctionID }) => {
 
   const canModify =
     currentUserData &&
-    (currentUserData.username === author?.username || currentUserData.is_staff);
+    (currentUsername === author?.username || currentUserData.is_staff);
 
   const deleteComment = async (e) => {
     e.preventDefault();
@@ -80,6 +81,7 @@ const CommentCard = ({ comment, auctionID }) => {
     canModify
       ? `/edit/comment?auction=${auctionID}&comment=${comment.id}`
       : "#";
+  console.log(author, "PEPE", canModify);
 
 return (
     <Link href={editLink}>
@@ -91,7 +93,12 @@ return (
                 <div className={styles.commenterInfo}>
                     <h3>{author?.username || "Anonymous"}</h3>
                     <span className={styles.commentDate}>
+                      {/* <div>
+                        {formatDate(commentDetails?.creation_date)}<small>(Creation date)</small>
+                      </div> */}
+                      <div>
                         {formatDate(commentDetails?.edit_date)} <small>(Edit date)</small>
+                      </div>
                     </span>
                 </div>
                 <div className={styles.commentActions}>

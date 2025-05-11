@@ -16,6 +16,7 @@ const CommentsBar = ({ id }) => {
         console.log(response);
         if (response && response.results) {
           setComments(response.results);
+          // console.log("Comments fetched successfully:", response.results);
         } else {
           setComments([]);
         }
@@ -24,8 +25,8 @@ const CommentsBar = ({ id }) => {
         setComments([]);
       }
     };
-
     getComments();
+
   }, [id, get]);
 
   return (

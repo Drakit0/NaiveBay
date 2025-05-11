@@ -1,7 +1,7 @@
 // Format date to be more readable
 const formatDate = (dateString) => {
   const date = new Date(dateString);
-  return date.toLocaleString("en-US", {
+  return date.toLocaleString("en-GB", {
     year: "numeric",
     month: "short",
     day: "numeric",
