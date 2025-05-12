@@ -1,0 +1,672 @@
+.page {
+  --gray-rgb: 0, 0, 0;
+  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
+  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+
+  display: grid;
+  grid-template-rows: 20px 1fr 20px;
+  align-items: center;
+  justify-items: center;
+  min-height: 100svh;
+  padding: 80px;
+  gap: 64px;
+  font-family: var(--font-geist-sans);
+}
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    --gray-rgb: 255, 255, 255;
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  grid-row-start: 2;
+}
+
+.main ol {
+  font-family: var(--font-geist-mono);
+  padding-left: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  list-style-position: inside;
+}
+
+.main li:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.main code {
+  font-family: inherit;
+  background: var(--gray-alpha-100);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.ctas {
+  display: flex;
+  gap: 16px;
+}
+
+.ctas a {
+  appearance: none;
+  border-radius: 128px;
+  height: 48px;
+  padding: 0 20px;
+  border: none;
+  border: 1px solid transparent;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+a.primary {
+  background: var(--foreground);
+  color: var(--background);
+  gap: 8px;
+}
+
+a.secondary {
+  border-color: var(--gray-alpha-200);
+  min-width: 180px;
+}
+
+.footer {
+  grid-row-start: 3;
+  display: flex;
+  gap: 24px;
+}
+
+.footer a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer img {
+  flex-shrink: 0;
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  a.primary:hover {
+    background: var(--button-primary-hover);
+    border-color: transparent;
+  }
+
+  a.secondary:hover {
+    background: var(--button-secondary-hover);
+    border-color: transparent;
+  }
+
+  .footer a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 32px;
+    padding-bottom: 80px;
+  }
+
+  .main {
+    align-items: center;
+  }
+
+  .main ol {
+    text-align: center;
+  }
+
+  .ctas {
+    flex-direction: column;
+  }
+
+  .ctas a {
+    font-size: 14px;
+    height: 40px;
+    padding: 0 16px;
+  }
+
+  a.secondary {
+    min-width: auto;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: invert();
+  }
+}
+
+.container{
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2rem;
+  height: 80%
+}
+.redText{
+  color: red;
+}
+.main {
+  display: flex;
+  padding: 1rem;
+  padding-top: 80px; /* Increase this value to create space below menu bar */
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: white;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem; /* Add top margin to push content down */
+}
+
+.title {
+  font-size: 24px;
+  /* color: #1F4452;s */
+  margin: 0;
+}
+
+.browseButton {
+  background-color: #1F7896;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.browseButton:hover {
+  background-color: #17607a;
+}
+
+.bidsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bidCard {
+  display: flex;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.bidCard:hover {
+  transform: translateY(-2px);
+}
+
+.bidImage {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bidImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.noImage {
+  color: #999;
+  font-size: 12px;
+}
+
+.bidContent {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bidTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1F4452;
+  text-decoration: none;
+  margin: 0;
+}
+
+.bidTitle:hover {
+  text-decoration: underline;
+}
+
+.bidPrice {
+  margin: 0;
+}
+
+.label {
+  color: #666;
+  margin-right: 4px;
+}
+
+.amount {
+  font-weight: bold;
+  color: #1F7896;
+}
+
+.bidDate {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.auctionInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.auctionInfo p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.status {
+  font-weight: 500;
+}
+
+.open {
+  color: #2ecc71;
+}
+
+.closed {
+  color: #e74c3c;
+}
+
+.bidActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.viewButton {
+  background-color: #f5f5f5;
+  color: #1F4452;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.viewButton:hover {
+  background-color: #e0e0e0;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+  color: #666;
+}
+
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #1F7896;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.emptyIcon {
+  color: #ccc;
+  margin-bottom: 16px;
+}
+
+.emptyState h2 {
+  margin: 0 0 8px;
+  color: #666;
+}
+
+.emptyState p {
+  margin: 0 0 24px;
+  color: #999;
+}
+
+.startBiddingButton {
+  background-color: #1F7896;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.startBiddingButton:hover {
+  background-color: #17607a;
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+  .bidCard {
+    flex-direction: column;
+  }
+  
+  .bidImage {
+    width: 100%;
+    height: 180px;
+  }
+  
+  .bidActions {
+    padding: 0 16px 16px;
+    justify-content: flex-start;
+  }
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: white;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+.title {
+  font-size: 24px;
+  margin: 0;
+}
+
+.browseButton {
+  background-color: #1F7896;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.browseButton:hover {
+  background-color: #17607a;
+}
+
+.ratingsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ratingCard {
+  display: flex;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.ratingCard:hover {
+  transform: translateY(-2px);
+}
+
+.ratingImage {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ratingImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.noImage {
+  color: #999;
+  font-size: 12px;
+}
+
+.ratingContent {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ratingTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1F4452;
+  text-decoration: none;
+  margin: 0;
+}
+
+.ratingTitle:hover {
+  text-decoration: underline;
+}
+
+.ratingStars {
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+}
+
+.starFilled {
+  color: #ffc107;
+  font-size: 20px;
+}
+
+.starEmpty {
+  color: #e0e0e0;
+  font-size: 20px;
+}
+
+.ratingDate {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.label {
+  color: #666;
+  margin-right: 4px;
+}
+
+.auctionInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.auctionInfo p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.status {
+  font-weight: 500;
+}
+
+.open {
+  color: #2ecc71;
+}
+
+.closed {
+  color: #e74c3c;
+}
+
+.ratingActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.viewButton {
+  background-color: #f5f5f5;
+  color: #1F4452;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.viewButton:hover {
+  background-color: #e0e0e0;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+  color: #666;
+}
+
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #1F7896;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.emptyIcon {
+  color: #ccc;
+  margin-bottom: 16px;
+}
+
+.emptyState h2 {
+  margin: 0 0 8px;
+  color: #666;
+}
+
+.emptyState p {
+  margin: 0 0 24px;
+  color: #999;
+}
+
+.startButton {
+  background-color: #1F7896;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.startButton:hover {
+  background-color: #17607a;
+}
+
+@media (max-width: 600px) {
+  .ratingCard {
+    flex-direction: column;
+  }
+  
+  .ratingImage {
+    width: 100%;
+    height: 180px;
+  }
+  
+  .ratingActions {
+    padding: 0 16px 16px;
+    justify-content: flex-start;
+  }
+}

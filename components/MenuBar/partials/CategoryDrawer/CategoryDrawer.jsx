@@ -61,6 +61,12 @@ const CategoryDrawer = () => {
             <Link href="/mybids">
               <h3>See my bids</h3>
             </Link>
+            <Link href={"/mycomments"}>
+              <h3>See my comments</h3>
+            </Link>
+            <Link href="/myratings">
+              <h3>See my ratings</h3>
+            </Link>
           </>
         ) : null}
         <h3>Category 1</h3>
