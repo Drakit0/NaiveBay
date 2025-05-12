@@ -211,3 +211,9 @@ a.secondary {
   text-decoration: none;
   display: inline-block;
 }
+.emptyState {
+  background-color: #1F7896;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}

@@ -33,9 +33,7 @@ export default function MyBids() {
             return;
           }
 
-          // Sort bids by date (most recent first)
-
-          setBids(bidsResponse);
+          setBids(bidsResponse.results);
         } catch (error) {
           console.error("Error loading bids:", error);
         } finally {
@@ -92,12 +90,10 @@ export default function MyBids() {
                   </div>
                   <div className={styles.bidContent}>
                     <Link
-                      href={`/detail/${bid.auction_id || bid.auction}`}
+                      href={`/detail/${bid.id}`}
                       className={styles.bidTitle}
                     >
-                      {bid.auction_details?.title ||
-                        bid.auction_title ||
-                        "Untitled Auction"}
+                      {bid.auction || "Untitled Auction"}
                     </Link>
                     <p className={styles.bidPrice}>
                       <span className={styles.label}>Your bid:</span>
@@ -109,7 +105,7 @@ export default function MyBids() {
                       <span className={styles.label}>Bid placed on:</span>
                       {formatDate(bid.creation_date)}
                     </p>
-                    <div className={styles.auctionInfo}>
+                    {/* <div className={styles.auctionInfo}>
                       <p className={styles.auctionStatus}>
                         <span className={styles.label}>Status:</span>
                         <span
@@ -142,7 +138,7 @@ export default function MyBids() {
                           )}
                         </p>
                       )}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ))}

@@ -65,7 +65,9 @@ function PageContent() {
       const formData = new FormData(e.target);
       const formObject = Object.fromEntries(formData);
       console.log("Form data:", formObject);
-      if (formObject.image && !formObject.thumbnail) {
+      if (formObject.thumbnail) {
+        delete formObject.image;
+      } else if (formObject.image) {
         formObject.thumbnail =
           "https://www.shutterstock.com/search/default-image-icon";
       }

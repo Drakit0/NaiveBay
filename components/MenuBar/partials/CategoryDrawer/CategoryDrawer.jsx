@@ -51,9 +51,17 @@ const CategoryDrawer = () => {
           </IconButton>
         </div>
         {isAuthenticated ? (
-          <Link href="/edit/auction">
-            <h3>Create new auction</h3>
-          </Link>
+          <>
+            <Link href="/edit/auction">
+              <h3>Create new auction</h3>
+            </Link>
+            <Link href="/myauctions">
+              <h3>See my auctions</h3>
+            </Link>
+            <Link href="/mybids">
+              <h3>See my bids</h3>
+            </Link>
+          </>
         ) : null}
         <h3>Category 1</h3>
         <h3>Category 2</h3>
