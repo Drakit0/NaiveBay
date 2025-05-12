@@ -32,7 +32,7 @@ const MyAuctionsContent = () => {
         const auctionsResponse = await get(`/users/myAuctions/`);
         console.log(auctionsResponse);
         if (auctionsResponse) {
-          setUserAuctions(auctionsResponse);
+          setUserAuctions(auctionsResponse.results);
         }
       } catch (error) {
         console.error("Error fetching user auctions:", error);
@@ -61,7 +61,7 @@ const MyAuctionsContent = () => {
       <main className={styles.main}>
         <div className={styles.container}>
           <div className={styles.header}>
-            <h1>My Auctions</h1>
+            <h1 className={styles.emptyState}>My Auctions</h1>
             <Link href="/edit/auction" className={styles.createButton}>
               Create New Auction
             </Link>

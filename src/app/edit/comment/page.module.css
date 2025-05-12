@@ -32,6 +32,7 @@
   flex-direction: column;
   gap: 32px;
   grid-row-start: 2;
+  width:100%;
 }
 
 .main ol {
@@ -165,55 +166,4 @@ a.secondary {
   .logo {
     filter: invert();
   }
-}
-
-.container{
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 2rem;
-  height: 80%
-}
-.redText{
-  color: red;
-}
-.main {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 1rem;
-}
-
-.container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  color: black;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  color:white;
-  margin-bottom: 1.5rem;
-}
-
-.createButton {
-  padding: 0.5rem 1rem;
-  background: #1F7896;
-  color: white;
-  border-radius: 4px;
-  text-decoration: none;
-  display: inline-block;
-}
-.emptyState {
-  background-color: #1F7896;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
 }

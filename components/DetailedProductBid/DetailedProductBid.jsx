@@ -6,6 +6,7 @@ import { useButtonTheme } from "../../components/Contexts/ButtonThemeProvider";
 import AuctionSettings from "../AuctionSettings/AuctionSettings";
 import Rating from "@mui/material/Rating";
 import BidsBar from "../BidsBar/BidsBar";
+import CommentsBar from "../CommentsBar/CommentsBar";
 import Link from "next/link";
 import formatDate from "./utils";
 import StarIcon from "@mui/icons-material/Star";
@@ -160,12 +161,22 @@ const DetailedProductCard = ({ product }) => {
                 Bid
               </button>
             </Link>
+            <Link href={`/edit/comment?auction=${product.id}`}>
             <button className={`${styles.button} ${styles.button__blue}`}>
-              Follow bid
+              Comment
             </button>
+            </Link>
           </div>
         </div>
-        {accessToken ? <BidsBar id={product.id} /> : null}
+        {accessToken ? (
+          <BidsBar id={product.id} />
+        ) : (
+          <p className={styles["warning-message"]}>
+            Only registered users can see bids. Please log in to access this feature.
+          </p>
+        )}
+
+        <CommentsBar id={product.id} />
 
         <hr className={styles.separator} />
 

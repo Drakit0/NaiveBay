@@ -35,7 +35,7 @@ const BidCard = ({ bid, auctionID }) => {
           SetDetailedBid(response);
         }
       } catch (error) {
-        console.error("Error fetching user:", error);
+        console.error("Error fetching bid details:", error);
       }
     };
 
@@ -46,8 +46,8 @@ const BidCard = ({ bid, auctionID }) => {
   const deleteBid = async (e) => {
     e.preventDefault(); // Stop the Link from navigating
     e.stopPropagation();
-    if (confirm("Are you sure you want to delete this auction?")) {
-      console.log(`Deleting auction ${auctionID}`);
+    if (confirm("Are you sure you want to delete this bid?")) {
+      console.log(`Deleting bid ${auctionID}`);
       try {
         // Await the async del function
         await del(`/auctions/${auctionID}/bids/${bid.id}/`);
@@ -57,14 +57,14 @@ const BidCard = ({ bid, auctionID }) => {
         // Redirect after successful deletion
         router.push("/");
       } catch (error) {
-        console.error("Error deleting auction:", error);
-        alert("An error occurred while deleting the auction");
+        console.error("Error deleting bid:", error);
+        alert("An error occurred while deleting the bid");
       }
     }
   };
 
   const bidLink =
-    user?.username === currentUser
+    user?.username === currentUser || user?.is_staff
       ? `/edit/bid?auction=${auctionID}&bid=${bid.id}`
       : "#";
 
@@ -86,7 +86,7 @@ const BidCard = ({ bid, auctionID }) => {
             </span>
           </div>
           <div className={styles.bidAmount}>
-            {user?.username === currentUser ? (
+            {user?.username === currentUser || user?.is_staff ? (
               <DeleteIcon className={styles.bidIcon} onClick={deleteBid} />
             ) : null}
             <GavelIcon className={styles.bidIcon} />

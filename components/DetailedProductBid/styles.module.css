@@ -270,4 +270,11 @@
 .ratingNumber {
     font-size: 1.2rem; /* Adjust size as needed */
 }
+
+.warning-message {
+    color: red;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    text-align: center;
+}
   

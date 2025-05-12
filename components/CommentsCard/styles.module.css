@@ -1,0 +1,68 @@
+.commentCard {
+  padding: 12px;
+  border-left: 4px solid #1F7896;
+  transition: transform 0.2s ease;
+}
+
+.commentCard:hover {
+  transform: translateX(4px);
+}
+
+.commentHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.commenterAvatar {
+  background-color: #1F7896 !important;
+  color: white !important;
+}
+
+.commenterInfo {
+  flex-grow: 1;
+}
+
+.commenterInfo h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.commentDate {
+  color: #666;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 13rem;
+}
+
+.commentActions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.commentIcon {
+  color: #1F7896;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.commentIcon:hover {
+  color: #333333;
+}
+
+.commentContent h4 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333333;
+}
+
+.commentContent p {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: #444444;
+  line-height: 1.4;
+}
