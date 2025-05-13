@@ -120,7 +120,7 @@ const DetailedProductCard = ({ product }) => {
               alt="User"
               className={styles["profile-picture"]}
             />
-            <b>{user || "Anonymous"}</b>
+            <b>{"Anonymous"}</b>
           </div>
           <h1 className={styles["item-name"]} id="item-name">
             {title}
