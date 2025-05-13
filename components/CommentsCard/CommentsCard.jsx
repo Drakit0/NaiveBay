@@ -57,18 +57,20 @@ const CommentCard = ({ comment, auctionID }) => {
   }, [auctionID, comment.id, comment.user, currentUsername, get]);
 
   const canModify =
-    currentUserData &&
-    (currentUsername === author?.username || currentUserData.is_staff);
+    (currentUsername === author?.username || author?.username);
 
+  // if (canModify) {
+  //   console.log("User can modify:", currentUserData);
+  // } 
   const deleteComment = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (canModify && confirm("Are you sure you want to delete this comment?")) {
+    if ( confirm("Are you sure you want to delete this comment?")) {
       try {
         await del(
           `/auctions/${auctionID}/comments/${comment.id}/`
         );
-        router.refresh();
+        router.push("/");
       } catch (err) {
         console.error("Error deleting comment:", err);
         alert("An error occurred while deleting the comment");
@@ -102,12 +104,12 @@ return (
                     </span>
                 </div>
                 <div className={styles.commentActions}>
-                    {canModify && (
+                    {canModify ? 
                         <DeleteIcon
                             className={styles.commentIcon}
                             onClick={deleteComment}
                         />
-                    )}
+                        : null}
                     <ChatBubbleOutlineIcon className={styles.commentIcon} />
                 </div>
             </div>

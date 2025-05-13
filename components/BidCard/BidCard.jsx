@@ -64,9 +64,11 @@ const BidCard = ({ bid, auctionID }) => {
   };
 
   const bidLink =
-    user?.username === currentUser || user?.is_staff
+    user?.username === currentUser || user?.username
       ? `/edit/bid?auction=${auctionID}&bid=${bid.id}`
       : "#";
+
+    // console.log(user?.username, currentUser, user);
 
   return (
     <Link href={bidLink}>
@@ -86,9 +88,9 @@ const BidCard = ({ bid, auctionID }) => {
             </span>
           </div>
           <div className={styles.bidAmount}>
-            {user?.username === currentUser || user?.is_staff ? (
-              <DeleteIcon className={styles.bidIcon} onClick={deleteBid} />
-            ) : null}
+            {(user?.username === currentUser || user?.username) ?
+              <DeleteIcon className={styles.bidIcon} onClick={deleteBid} /> :
+              null}
             <GavelIcon className={styles.bidIcon} />
             <span>${detailedBid?.price}</span>
           </div>

@@ -13,13 +13,14 @@ const auctionStructure = ["title", "content"];
 function PageContent() {
   const params = useSearchParams();
   const auction = params.get("auction");
-  const commentId = params.get("id");
+  const commentId = params.get("comment");
   const { get, post, put } = UseNaiveBackAPI();
   const [element, setElement] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
     const getElement = async () => {
+
       if (!auction) {
         router.push("/");
         return;
@@ -32,7 +33,8 @@ function PageContent() {
         return;
       }
       try {
-        const response = await get(`/auctions/${auction}/comments/${commentId}`);
+        const response = await get(`/auctions/${auction}/comments/${commentId}/`);
+        // console.log("Response from getElement:", response);
 
         if (response) {
           // Remove properties not meant to be edited
@@ -44,11 +46,11 @@ function PageContent() {
           setElement(response);
         }
       } catch (error) {
-        console.error("Error fetching element:", error);
         router.push("/");
       }
     };
     getElement();
+    
   }, [auction, commentId, get, router]);
 
   const handleSubmit = async (e) => {
@@ -57,9 +59,12 @@ function PageContent() {
       // Convert form data to object
       const formData = new FormData(e.target);
       const formObject = Object.fromEntries(formData);
-
+      console.log("Form data to submit:", formObject);
+      console.log(auction, commentId)
+      
       let response;
       if (!commentId) {
+        // console.log("Creating new comment");
         response = await post(`/auctions/${auction}/comments/`, formObject);
       } else {
         response = await put(`/auctions/${auction}/comments/${commentId}/`, formObject);

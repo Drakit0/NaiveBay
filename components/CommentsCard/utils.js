@@ -1,6 +1,7 @@
 // Format date to be more readable
 const formatDate = (dateString) => {
   const date = new Date(dateString);
+  date.setHours(date.getHours() - 2); // Subtract 2 hours
   return date.toLocaleString("en-GB", {
     year: "numeric",
     month: "short",

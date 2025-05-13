@@ -56,6 +56,7 @@ function PageContent() {
       // Convert form data to object
       const formData = new FormData(e.target);
       const formObject = Object.fromEntries(formData);
+      console.log("Form data:", formObject);
 
       let response;
       if (!bidId) {
