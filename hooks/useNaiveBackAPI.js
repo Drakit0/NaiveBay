@@ -66,8 +66,8 @@ const UseNaiveBackAPI = () => {
       }
 
       const response = await fetch(url, { headers });
-      // const response = await fetch(url);
       if (!response.ok) {
+        console.error("GET request failed:", response.status, response.statusText);
         return null;
       }
       const data = await response.json();

@@ -12,6 +12,7 @@ import formatDate from "./utils";
 import StarIcon from "@mui/icons-material/Star";
 import { Button } from "@mui/material";
 import useRatings from "./hooks";
+import UseNaiveBackAPI from "../../hooks/useNaiveBackAPI";
 import { use, useEffect, useState } from "react";
 
 const DetailedProductCard = ({ product }) => {
@@ -22,6 +23,8 @@ const DetailedProductCard = ({ product }) => {
     product.id
   );
   const [user, SetUser] = useState(null);
+  const { get, } = UseNaiveBackAPI();
+
 
   const handleDeleteRating = async () => {
     if (rating) {
@@ -67,7 +70,7 @@ const DetailedProductCard = ({ product }) => {
 
     fetchUser();
   });
-
+  // console.log("user", user);
   return (
     <main className={`${styles["bidding-page"]} ${styles.text}`}>
       <div className={styles["images-container"]}>
@@ -120,7 +123,7 @@ const DetailedProductCard = ({ product }) => {
               alt="User"
               className={styles["profile-picture"]}
             />
-            <b>{"Anonymous"}</b>
+            <b>{user?.username || "Anonymous"}</b>
           </div>
           <h1 className={styles["item-name"]} id="item-name">
             {title}
