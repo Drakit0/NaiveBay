@@ -121,6 +121,11 @@ export default function MyRatings() {
                           {rating.is_open ? "Active" : "Closed"}
                         </span>
                       </p>
+                        <p className={styles.auctionUser}>
+                        <span className={styles.label}>
+                          User: {rating.user || "Anonymous"}
+                        </span>
+                      </p>
                     </div>
                   </div>
                 </div>

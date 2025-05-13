@@ -12,7 +12,7 @@ import formatDate from "./utils";
 import StarIcon from "@mui/icons-material/Star";
 import { Button } from "@mui/material";
 import useRatings from "./hooks";
-import { use, useEffect } from "react";
+import { use, useEffect, useState } from "react";
 
 const DetailedProductCard = ({ product }) => {
   const buttonTheme = useButtonTheme();
@@ -21,6 +21,8 @@ const DetailedProductCard = ({ product }) => {
   const { rating, getRating, postRating, putRating, delRating } = useRatings(
     product.id
   );
+  const [user, SetUser] = useState(null);
+
   const handleDeleteRating = async () => {
     if (rating) {
       await delRating();
@@ -55,6 +57,16 @@ const DetailedProductCard = ({ product }) => {
   const brand = product?.brand || "Hamilton";
   const tags = product?.tags ? product.tags.slice(1, 2) : [];
   const shippingInformation = product?.shippingInformation || "Shipment";
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const fetchedUser = await get(`/users/${product.auctioneer}`);
+      console.log("Individual user", fetchedUser);
+      SetUser(fetchedUser);
+    };
+
+    fetchUser();
+  });
 
   return (
     <main className={`${styles["bidding-page"]} ${styles.text}`}>
@@ -108,7 +120,7 @@ const DetailedProductCard = ({ product }) => {
               alt="User"
               className={styles["profile-picture"]}
             />
-            <b>Mr. Peanuts</b>
+            <b>{user || "Anonymous"}</b>
           </div>
           <h1 className={styles["item-name"]} id="item-name">
             {title}

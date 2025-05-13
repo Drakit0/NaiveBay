@@ -106,6 +106,11 @@ export default function MyComments() {
                           {comment.is_open ? "Active" : "Closed"}
                         </span>
                       </p>
+                      <p className={styles.auctionUser}>
+                        <span className={styles.label}>
+                          User: {comment.user || "Anonymous"}
+                        </span>
+                      </p>
                     </div>
                   </div>
                 </div>
