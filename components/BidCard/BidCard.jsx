@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import UseNaiveBackAPI from "../../hooks/useNaiveBackAPI";
 import styles from "./styles.module.css";
-import { formatDate } from "./utils.js";
+import { formatDate, checkIfUserIsStaff } from "./utils.js";
 import { Avatar, Paper } from "@mui/material";
 import GavelIcon from "@mui/icons-material/Gavel";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -13,7 +13,24 @@ const BidCard = ({ bid, auctionID }) => {
   const [user, SetUser] = useState(null);
   const [detailedBid, SetDetailedBid] = useState(null);
   const currentUser = localStorage.getItem("username");
+  const currentStaff = localStorage.getItem("is_staff");
   const router = useRouter();
+
+  const [isStaff, setIsStaff] = useState(null);
+  
+  useEffect(() => {
+    const fetchIsStaff = async () => {
+      try {
+        const result = await checkIfUserIsStaff(currentUser, get);
+        setIsStaff(result);
+        console.log("isStaff", result);
+      } catch (err) {
+        console.error("Error checking staff status:", err);
+      }
+    };
+
+    fetchIsStaff();
+  }, [currentUser, get]);
 
   useEffect(() => {
     const getUser = async () => {
@@ -64,7 +81,7 @@ const BidCard = ({ bid, auctionID }) => {
   };
 
   const bidLink =
-    user?.username === currentUser || user?.username
+    user?.username === currentUser || isStaff
       ? `/edit/bid?auction=${auctionID}&bid=${bid.id}`
       : "#";
 
@@ -88,7 +105,7 @@ const BidCard = ({ bid, auctionID }) => {
             </span>
           </div>
           <div className={styles.bidAmount}>
-            {(user?.username === currentUser || user?.is_staff) ?
+            {(user?.username === currentUser || isStaff) ?
               <DeleteIcon className={styles.bidIcon} onClick={deleteBid} /> :
               null}
             <GavelIcon className={styles.bidIcon} />

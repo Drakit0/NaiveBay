@@ -10,9 +10,11 @@ import MainPageTemplate from "../../../components/MainPageTemplate/MainPageTempl
 export default function MyComments() {
   const [loading, setLoading] = useState(true);
   const [comments, setComments] = useState([]);
+  const [currentUsername, setCurrentUsername] = useState("");
   const { get } = UseNaiveBackAPI();
   const router = useRouter();
-  const currentUsername = localStorage.getItem("username");
+  const username = window.localStorage.getItem("username") || "";
+  setCurrentUsername(username);
 
   useEffect(() => {
     // Check authentication

@@ -18,7 +18,7 @@ import { use, useEffect, useState } from "react";
 const DetailedProductCard = ({ product }) => {
   const buttonTheme = useButtonTheme();
   const accessToken = localStorage.getItem("accessToken");
-  console.log("product", product);
+  // console.log("product", product);
   const { rating, getRating, putRating, delRating } = useRatings(product.id);
   const [user, SetUser] = useState(null);
   const { get } = UseNaiveBackAPI();
@@ -53,7 +53,7 @@ const DetailedProductCard = ({ product }) => {
           "../../public/images/bidding_example_watch/hamilton_2.png",
           "../../public/images/bidding_example_watch/hamilton_3.png",
         ];
-  console.log(images);
+  // console.log(images);
   const brand = product?.brand || "Hamilton";
   const tags = product?.tags ? product.tags.slice(1, 2) : [];
   const shippingInformation = product?.shippingInformation || "Shipment";
@@ -69,14 +69,14 @@ const DetailedProductCard = ({ product }) => {
   useEffect(() => {
     const fetchUser = async () => {
       const fetchedUser = await get(`/users/${product.auctioneer}`);
-      console.log("Individual user", fetchedUser);
+      // console.log("Individual user", fetchedUser);
       SetUser(fetchedUser);
     };
 
     fetchUser();
   });
-  console.log("user", user);
-  console.log("auctioneer", product.auctioneer);
+  // console.log("user", user);
+  // console.log("auctioneer", product.auctioneer);
   return (
     <main className={`${styles["bidding-page"]} ${styles.text}`}>
       <div className={styles["images-container"]}>

@@ -11,9 +11,11 @@ import { Rating } from "@mui/material";
 export default function MyRatings() {
   const [loading, setLoading] = useState(true);
   const [ratings, setRatings] = useState([]);
+  const [currentUsername, setCurrentUsername] = useState("");
   const { get } = UseNaiveBackAPI();
   const router = useRouter();
-  const currentUsername = localStorage.getItem("username");
+  const username = window.localStorage.getItem("username") || "";
+  setCurrentUsername(username);
 
   useEffect(() => {
     // Check authentication

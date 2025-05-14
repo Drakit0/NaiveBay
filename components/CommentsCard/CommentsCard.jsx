@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import UseNaiveBackAPI from "../../hooks/useNaiveBackAPI";
 import styles from "./styles.module.css";
-import { formatDate } from "./utils.js";
+import { formatDate, checkIfUserIsStaff } from "./utils.js";
 import { Avatar, Paper } from "@mui/material";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -13,8 +13,23 @@ const CommentCard = ({ comment, auctionID }) => {
   const [author, setAuthor] = useState(null);
   const [commentDetails, setCommentDetails] = useState(null);
   const [currentUserData, setCurrentUserData] = useState(null);
-  const currentUsername = localStorage.getItem("username");
   const router = useRouter();
+  const currentUsername = localStorage.getItem("username") || "";
+  const [isStaff, setIsStaff] = useState(null);
+
+  useEffect(() => {
+    const fetchIsStaff = async () => {
+      try {
+        const result = await checkIfUserIsStaff(currentUsername, get);
+        setIsStaff(result);
+        console.log("isStaff", result);
+      } catch (err) {
+        console.error("Error checking staff status:", err);
+      }
+    };
+
+    fetchIsStaff();
+  }, [currentUsername, get]);
 
   useEffect(() => {
     // Fetch comment author
@@ -41,23 +56,23 @@ const CommentCard = ({ comment, auctionID }) => {
     };
 
     // Fetch current user data to check admin status
-    const fetchCurrentUser = async () => {
-      if (!currentUsername) return;
-      try {
-        const res = await get(`/users/${currentUsername}`);
-        if (res) setCurrentUserData(res);
-      } catch (err) {
-        console.error("Error fetching current user data:", err);
-      }
-    };
+    // const fetchCurrentUser = async () => {
+    //   if (!currentUsername) return;
+    //   try {
+    //     const res = await get(`/users/${currentUsername}`);
+    //     if (res) setCurrentUserData(res);
+    //   } catch (err) {
+    //     console.error("Error fetching current user data:", err);
+    //   }
+    // };
 
     fetchAuthor();
     fetchComment();
-    fetchCurrentUser();
+    // fetchCurrentUser();
   }, [auctionID, comment.id, comment.user, currentUsername, get]);
 
   const canModify =
-    (currentUsername === author?.username || author?.is_staff);
+    (currentUsername === author?.username || isStaff);
 
   // if (canModify) {
   //   console.log("User can modify:", currentUserData);
