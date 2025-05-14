@@ -19,12 +19,9 @@ const DetailedProductCard = ({ product }) => {
   const buttonTheme = useButtonTheme();
   const accessToken = localStorage.getItem("accessToken");
   console.log("product", product);
-  const { rating, getRating, postRating, putRating, delRating } = useRatings(
-    product.id
-  );
+  const { rating, getRating, putRating, delRating } = useRatings(product.id);
   const [user, SetUser] = useState(null);
-  const { get, } = UseNaiveBackAPI();
-
+  const { get } = UseNaiveBackAPI();
 
   const handleDeleteRating = async () => {
     if (rating) {
@@ -60,6 +57,14 @@ const DetailedProductCard = ({ product }) => {
   const brand = product?.brand || "Hamilton";
   const tags = product?.tags ? product.tags.slice(1, 2) : [];
   const shippingInformation = product?.shippingInformation || "Shipment";
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check authentication status when component mounts
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsLoggedIn(!!localStorage.getItem("accessToken"));
+    }
+  }, []);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -132,15 +137,17 @@ const DetailedProductCard = ({ product }) => {
         </div>
 
         <hr className={styles.separator} />
-        <div className={styles.ratingContainer}>
-          <p>Rate this auction</p>
-          <Rating
-            onChange={handleRatingChange}
-            defaultValue={rating}
-            value={rating || null}
-          />
-          <Button onClick={handleDeleteRating}>Remove</Button>
-        </div>
+        {isLoggedIn ? (
+          <div className={styles.ratingContainer}>
+            <p>Rate this auction</p>
+            <Rating
+              onChange={handleRatingChange}
+              defaultValue={rating}
+              value={rating || null}
+            />
+            <Button onClick={handleDeleteRating}>Remove</Button>
+          </div>
+        ) : null}
 
         <div className={styles["bidding-description"]}>
           <ul>
@@ -177,9 +184,9 @@ const DetailedProductCard = ({ product }) => {
               </button>
             </Link>
             <Link href={`/edit/comment?auction=${product.id}`}>
-            <button className={`${styles.button} ${styles.button__blue}`}>
-              Comment
-            </button>
+              <button className={`${styles.button} ${styles.button__blue}`}>
+                Comment
+              </button>
             </Link>
           </div>
         </div>
@@ -187,7 +194,8 @@ const DetailedProductCard = ({ product }) => {
           <BidsBar id={product.id} />
         ) : (
           <p className={styles["warning-message"]}>
-            Only registered users can see bids. Please log in to access this feature.
+            Only registered users can see bids. Please log in to access this
+            feature.
           </p>
         )}
 

@@ -70,7 +70,7 @@ const CategoryDrawer = () => {
           </>
         ) : null}
         <h3>Category 1</h3>
-        <h3>Category 2</h3>
+        
       </Drawer>
     </>
   );
