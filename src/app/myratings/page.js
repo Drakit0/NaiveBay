@@ -13,6 +13,7 @@ export default function MyRatings() {
   const [ratings, setRatings] = useState([]);
   const { get } = UseNaiveBackAPI();
   const router = useRouter();
+  const currentUsername = localStorage.getItem("username");
 
   useEffect(() => {
     // Check authentication
@@ -123,7 +124,12 @@ export default function MyRatings() {
                       </p>
                         <p className={styles.auctionUser}>
                         <span className={styles.label}>
-                          User: {rating.user || "Anonymous"}
+                          User:{" "}
+                          {rating.user
+                            ? rating.user === currentUsername
+                              ? "You"
+                              : rating.user
+                            : "anonymous"}
                         </span>
                       </p>
                     </div>

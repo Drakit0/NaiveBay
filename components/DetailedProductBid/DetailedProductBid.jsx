@@ -75,7 +75,8 @@ const DetailedProductCard = ({ product }) => {
 
     fetchUser();
   });
-  // console.log("user", user);
+  console.log("user", user);
+  console.log("auctioneer", product.auctioneer);
   return (
     <main className={`${styles["bidding-page"]} ${styles.text}`}>
       <div className={styles["images-container"]}>

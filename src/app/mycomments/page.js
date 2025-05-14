@@ -12,6 +12,7 @@ export default function MyComments() {
   const [comments, setComments] = useState([]);
   const { get } = UseNaiveBackAPI();
   const router = useRouter();
+  const currentUsername = localStorage.getItem("username");
 
   useEffect(() => {
     // Check authentication
@@ -108,7 +109,12 @@ export default function MyComments() {
                       </p>
                       <p className={styles.auctionUser}>
                         <span className={styles.label}>
-                          User: {comment.user || "Anonymous"}
+                          User:{" "}
+                          {comment.user
+                            ? comment.user === currentUsername
+                              ? "You"
+                              : comment.user
+                            : "anonymous"}
                         </span>
                       </p>
                     </div>

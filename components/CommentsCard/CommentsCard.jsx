@@ -57,7 +57,7 @@ const CommentCard = ({ comment, auctionID }) => {
   }, [auctionID, comment.id, comment.user, currentUsername, get]);
 
   const canModify =
-    (currentUsername === author?.username || author?.username);
+    (currentUsername === author?.username || author?.is_staff);
 
   // if (canModify) {
   //   console.log("User can modify:", currentUserData);
@@ -83,7 +83,7 @@ const CommentCard = ({ comment, auctionID }) => {
     canModify
       ? `/edit/comment?auction=${auctionID}&comment=${comment.id}`
       : "#";
-  console.log(author, "PEPE", canModify);
+  // console.log(author, "PEPE", canModify);
 
 return (
     <Link href={editLink}>
