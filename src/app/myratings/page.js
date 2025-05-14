@@ -14,16 +14,20 @@ export default function MyRatings() {
   const [currentUsername, setCurrentUsername] = useState("");
   const { get } = UseNaiveBackAPI();
   const router = useRouter();
-  const username = window.localStorage.getItem("username") || "";
-  setCurrentUsername(username);
+
 
   useEffect(() => {
-    // Check authentication
-    if (typeof window !== "undefined") {
-      const accessToken = localStorage.getItem("accessToken");
+    // Grab username from localStorage (client-only)
+      const savedUsername = typeof window !== "undefined"
+       ? window.localStorage.getItem("username") || ""
+       : "";
+      setCurrentUsername(savedUsername);
+
+      // Check authentication
+      const accessToken = window.localStorage.getItem("accessToken");
       if (!accessToken) {
-        router.push("/login?redirect=myratings");
-        return;
+       router.push("/login?redirect=mycomments");
+       return;
       }
 
       const loadUserRatings = async () => {
@@ -44,7 +48,7 @@ export default function MyRatings() {
 
       loadUserRatings();
     }
-  }, [get, router]);
+  , [get, router]);
 
   // Render stars based on rating value
   const renderStars = (rating) => {

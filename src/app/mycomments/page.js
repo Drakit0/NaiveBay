@@ -13,16 +13,19 @@ export default function MyComments() {
   const [currentUsername, setCurrentUsername] = useState("");
   const { get } = UseNaiveBackAPI();
   const router = useRouter();
-  const username = window.localStorage.getItem("username") || "";
-  setCurrentUsername(username);
 
   useEffect(() => {
-    // Check authentication
-    if (typeof window !== "undefined") {
-      const accessToken = localStorage.getItem("accessToken");
+      // Grab username from localStorage (client-only)
+      const savedUsername = typeof window !== "undefined"
+       ? window.localStorage.getItem("username") || ""
+       : "";
+      setCurrentUsername(savedUsername);
+
+      // Check authentication
+      const accessToken = window.localStorage.getItem("accessToken");
       if (!accessToken) {
-        router.push("/login?redirect=mycomments");
-        return;
+       router.push("/login?redirect=mycomments");
+       return;
       }
 
       const loadUserComments = async () => {
@@ -43,7 +46,7 @@ export default function MyComments() {
 
       loadUserComments();
     }
-  }, [get, router]);
+  , [get, router]);
 
   return (
     <MainPageTemplate>
