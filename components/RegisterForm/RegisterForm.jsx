@@ -5,6 +5,7 @@ import { Button, ThemeProvider } from "@mui/material";
 import { useButtonTheme } from "../Contexts/ButtonThemeProvider";
 import useRegisterValidation from "../../src/app/register/hooks";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const communityCities = {
   Madrid: ["Madrid", "Buitrago del Lozoya", "El Escorial"],
@@ -18,6 +19,7 @@ export default function RegisterForm() {
 
   const [selectedCommunity, setSelectedCommunity] = useState("");
   const [cityOptions, setCityOptions] = useState([]);
+  const router = useRouter();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -42,7 +44,7 @@ export default function RegisterForm() {
         setBackendError(result.error);
       } else {
         // On successful registration, redirect to the main page
-        window.location.href = "http://localhost:3000/";
+        router.push("/");
       }
     }
   };
