@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NaiveBay
 
-## Getting Started
+Web front end for NaiveBay, an online auction site. It talks to the REST API in [Drakit0/NaiveBayBack](https://github.com/Drakit0/NaiveBayBack).
 
-First, run the development server:
+Built for the course Desarrollo de Aplicaciones y Servicios (Comillas ICAI, January to May 2025). The course documentation for the three sprints and the mockups are in `documentation/` (in Spanish).
+
+## What it does
+
+Pages, under `src/app`:
+
+- `/` home page with two product rows (Trending, Ending Soon).
+- `/login` and `/register`.
+- `/auctions` auction list with search, category, price, rating and open or closed filters.
+- `/detail/[id]` auction detail with bids, average rating, star rating and comments.
+- `/edit/auction`, `/edit/[id]`, `/edit/bid`, `/edit/comment` forms to create or change auctions, bids and comments. Auctions accept an image URL or an uploaded image.
+- `/myauctions`, `/mybids`, `/mycomments`, `/myratings` lists of the logged in user's own items.
+- `/user` profile view and update, password change and logout.
+
+The access token is kept in `localStorage` and sent as a Bearer token. When it has expired the user is sent back to the login page.
+
+## Stack
+
+Next.js 15 (App Router), React 19, Material UI 6, CSS modules. `servidor.py` and `test_servidor.py` are a small Python HTTP server and its tests from an earlier lab, run by the workflow in `.github/workflows/ci.yaml`.
+
+## Run locally
+
+Start the API from NaiveBayBack first (see its README), then:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Other scripts: `npm run build`, `npm start`, `npm run lint`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment variables
 
-## Learn More
+| Name | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_API_URL` | Base URL of the API, including `/api`. Defaults to `http://127.0.0.1:8000/api`. |
 
-To learn more about Next.js, take a look at the following resources:
+Set it in `.env.local` when the API runs somewhere else, for example `NEXT_PUBLIC_API_URL=https://example.com/api`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Authors
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Pablo Tuñón Laguna
+- Sergio Jiménez Romero
 
-## Deploy on Vercel
+## Licence
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT, see `LICENSE`.

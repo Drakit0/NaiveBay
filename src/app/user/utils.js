@@ -1,6 +1,8 @@
+import { API_URL } from "../../../constants/constants";
+
 export const getUserProfile = async (accessToken) => {
     const response = await fetch(
-      "https://das-p2-backend.onrender.com/api/users/profile/",
+      `${API_URL}/users/profile/`,
       {
         method: "GET",
         headers: {
@@ -20,7 +22,7 @@ export const getUserProfile = async (accessToken) => {
   
   export const updateUserProfile = async (accessToken, formData) => {
     const response = await fetch(
-      "https://das-p2-backend.onrender.com/api/users/profile/",
+      `${API_URL}/users/profile/`,
       {
         method: "PATCH", // PUT or PATCH
         headers: {

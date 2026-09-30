@@ -1,7 +1,9 @@
+import { API_URL } from "../../../constants/constants";
+
 const registerUser = async (userData) => {
     try {
       const response = await fetch(
-        "https://das-p2-backend.onrender.com/api/users/register/", // Change if necessary
+        `${API_URL}/users/register/`,
         {
           method: "POST",
           headers: {
