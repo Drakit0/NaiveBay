@@ -1,6 +1,6 @@
 # NaiveBay
 
-Web front end for NaiveBay, an online auction site. It talks to the REST API in [Drakit0/NaiveBayBack](https://github.com/Drakit0/NaiveBayBack).
+Web front end for NaiveBay, an online auction site. It talks to a Django REST API (the NaiveBayBack project, by the same authors), which is not published yet.
 
 Built for the course Desarrollo de Aplicaciones y Servicios (Comillas ICAI, January to May 2025). The course documentation for the three sprints and the mockups are in `documentation/` (in Spanish).
 
@@ -24,7 +24,7 @@ Next.js 15 (App Router), React 19, Material UI 6, CSS modules. `servidor.py` and
 
 ## Run locally
 
-Start the API from NaiveBayBack first (see its README), then:
+Start the API from NaiveBayBack first, then:
 
 ```bash
 npm install
